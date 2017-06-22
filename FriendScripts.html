@@ -67,10 +67,12 @@ var dataRef = firebase.database();
     var name = "";
     var email = "";
     var age = 0;
-    var adLib = "";
+    var adLibArray = [];
+    var adLib;
     // Capture Button Click
     $("#commit-Lib").on("click", function(event) {
       event.preventDefault();
+      $("#prompt-Lib").empty()
       // YOUR TASK!!!
       // Code in the logic for storing and retrieving the most recent user.
       // Don't forget to provide initial data to your Firebase database.
@@ -79,22 +81,35 @@ var dataRef = firebase.database();
       // age = $("#age-input").val().trim();
       adLib = $("#adLib-input").val().trim();
       console.log($("#adLib-input").val().trim())
+      adLibArray.push(adLib);
       // Code for the push
       dataRef.ref().push({
         name: name,
         email: email,
         age: age,
-        adLib: adLib,
+        adLibArray: adLibArray,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
       });
-      $("#prompt-Lib").empty()
+      
+      // console.log(adLibArray);
+      
     });
 
 dataRef.ref().on("child_added", function(childSnapshot) {
+  
+  // console.log("this is the array" , adLibArray);
       // Log everything that's coming out of snapshot
-      console.log(childSnapshot.val().adLib);
+      // console.log(childSnapshot.val().adLib);
       // full list of items to the well
-      $("#prompt-Lib").append(childSnapshot.val().adLib);
+     
+      if (adLibArray.length > 0){
+           var lastSentence = adLibArray.length-1;
+            $("#prompt-Lib").append(childSnapshot.val().adLibArray[lastSentence]);
+      }else {
+        console.log("lenth of array", adLibArray.length);
+      };
+      
+     
     // Handle the errors
     }, function(errorObject) {
       console.log("Errors handled: " + errorObject.code);

@@ -1,61 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>FriendScripts</title>
-	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+   <!--  <script type="text/javascript" src="assets/javascript/app.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
+
 <body>
+    <br>
+    <div class="container mainContain">
+        <div id="leftNav" class="container col-md-3">
+            <img alt="Brand" src="assets/images/Asset.png">
+            <img alt="Brand" src="assets/images/Asset.png">
+            <img alt="Brand" src="assets/images/Asset.png">
+            <img alt="Brand" src="assets/images/Asset.png">
+            <img alt="Brand" src="assets/images/Asset.png">
+        </div>
+        <div id="rightView" class="container col-md-9 bgPic">
+        <h1>Story Prompt</h1>
+            <div id="" class="row topPanel">
+                <p id="prompt-Lib">
+                </p>
+            </div>
+            <nav class="row">
+                <div class="buttonNav container">
+                    <div class="col-md-4">
+                        <button type="button" style="background: #8ccc25" class="btn btn-primary buttonBg">New Story</button>
+                        <button type="button" style="background: #8ccc25" class="btn btn-primary buttonBg">Join Story</button>
+                        <button type="button" style="background: #8ccc25" class="btn btn-primary buttonBg">Read Story</button>
+                    </div>
+                    <div class="col-md-5 col-md-offset-3">
+                        <button lexicalCategory="noun" type="reset" style="background: #8ccc25" class="btn btn-default lexical">Noun</button>
+                        <button lexicalCategory="verb" type="reset" style="background: #8ccc25" class="btn btn-default lexical">Verb</button>
+                        <button lexicalCategory="adjective" type="reset" style="background: #8ccc25" class="btn btn-default lexical">Adjective</button>
+                        <button lexicalCategory="adverb" type="reset" style="background: #8ccc25" class="btn btn-default lexical">Adverb</button>
+                        <button lexicalCategory="idiom" type="reset" style="background: #8ccc25" class="btn btn-default lexical">Idiom</button>
+                        
+                    </div>
+                </div>
+            </nav>
+            <div class="row">
+                <!--   <div class="container"> -->
+                <div id="lBottomPanel" class="col-md-4">
+                    Left Panel
+                </div>
+                <div id="rBottomPanel" class="col-md-8">
+                    <div class="row panelTitle">
 
-<h1>The last sentence submitted to this story was:</h1>
-<div id="prompt-Lib">
-
-	
-</div>
-
-<form class="form-horizontal">
-  <fieldset>
-    <legend>Legend</legend>
-    <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-      <div class="col-lg-10">
-        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="textArea" class="col-lg-2 control-label">Enter in your Ad Lib</label>
-      <div class="col-lg-10">
-        <textarea class="form-control" rows="3" id="adLib-input"></textarea>
-        <span class="help-block"></span>
-      </div>
-    </div>
-    
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button lexicalCategory="noun" type="reset" class="btn btn-default lexical">Noun</button>
-        <button lexicalCategory="verb" type="reset" class="btn btn-default lexical">Verb</button>
-        <button lexicalCategory="adjective" type="reset" class="btn btn-default lexical">Adjective</button>
-        <button lexicalCategory="adverb" type="reset" class="btn btn-default lexical">Adverb</button>
-        <button lexicalCategory="idiom" type="reset" class="btn btn-default lexical">Idiom</button>
-        <button id="commit-Lib" type="submit" class="btn btn-primary">Submit</button>
-      </div>
-      <div id="defDiv"></div>
-    </div>
-  </fieldset>
-</form>
-
-
-
-
-	
+                    <div class="form-group">
+                        <label for="exampleTextarea">Example textarea</label>
+                        <textarea class="form-control textArea" id="adLib-input" rows="3"></textarea>
+                    </div>
+                    <div>
+                        <button id="commit-Lib" type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <!--          </div> -->
+                </div>
+            </div>
+            <div class="row">
+                <footer id="defDiv" class="col-md-10 col-md-offset-1 footerStyle">
+                    <p>Definitions</p>
+                </footer>
+            </div>
+        </div>
 </body>
+
+</html>
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 <script type="text/javascript">
   // Initialize Firebase
@@ -76,7 +92,7 @@ var dataRef = firebase.database();
     var age = 0;
     var adLibArray = [];
     var adLib;
-    var storyIndex = "newStory";
+    var storyIndex = 0;
     // Capture Button Click
     $("#commit-Lib").on("click", function(event) {
       event.preventDefault();
@@ -123,7 +139,7 @@ var dataRef = firebase.database();
             console.log("length of array", adLibArray.length);
       };
 
-        }
+
       
       });
       

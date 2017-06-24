@@ -54,7 +54,7 @@
                     <div class="row panelTitle">
 
                     <div class="form-group">
-                        <label for="exampleTextarea">Example textarea</label>
+                        <label for="exampleTextarea">Enter your Sentence</label>
                         <textarea class="form-control textArea" id="adLib-input" rows="3"></textarea>
                     </div>
                     <div>
@@ -85,29 +85,25 @@
   };
   firebase.initializeApp(config);
 
-var dataRef = firebase.database();
     // Initial Values
+    var dataRef = firebase.database();
     var name = "";
     var email = "";
     var age = 0;
     var adLibArray = [];
     var adLib;
     var storyIndex = 0;
+
     // Capture Button Click
     $("#commit-Lib").on("click", function(event) {
       event.preventDefault();
       $("#prompt-Lib").empty();
-      // YOUR TASK!!!
-      // Code in the logic for storing and retrieving the most recent user.
-      // Don't forget to provide initial data to your Firebase database.
-      // name = $("#name-input").val().trim();
-      // email = $("#email-input").val().trim();
-      // age = $("#age-input").val().trim();
+      
       //Get the User Input and Trim the spaces.
       adLib = $("#adLib-input").val().trim();
       console.log($("#adLib-input").val().trim())
       adLibArray.push(adLib);
-      //Clear out the user Input Text Field
+      
       
       // Code to push the data to 
       var storiesRef = dataRef.ref().child("stories");
@@ -137,23 +133,23 @@ var dataRef = firebase.database();
             $("#prompt-Lib").append(storySentences[lastSentence]);
         }else {
             console.log("length of array", adLibArray.length);
-      };
+          };
 
-
+        
       
       });
-      
-      $("#adLib-input").empty();
+      //Clear out the user Input Text Field
+      $("#adLib-input").val("");
       $("#prompt-Lib").empty();
       $("#defDiv").empty();
-
-    }); 
+    });
+ 
 
 
 $(".lexical").click(function(){
-  var lexical = $(this).attr("lexicalCategory");
   var currentText = $("#adLib-input").val();
   $("#adLib-input").empty();
+  var lexical = $(this).attr("lexicalCategory");
   var queryURL = "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech="+lexical+"&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
   $.ajax({
         type: "GET",
@@ -163,7 +159,8 @@ $(".lexical").click(function(){
         error: function(response) {console.log(response);}
   })
   .done(function(data) {
-              $("#adLib-input").append(currentText + data.word+" ")
+             
+              $("#adLib-input").val(currentText + data.word+" ")
               var randomWord = data.word;
               $.ajax({
                 type: "GET",

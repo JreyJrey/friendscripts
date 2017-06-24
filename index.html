@@ -8,8 +8,9 @@
 </head>
 <body>
 
-
+<h1>The last sentence submitted to this story was:</h1>
 <div id="prompt-Lib">
+
 	
 </div>
 
@@ -29,10 +30,10 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+      <label for="textArea" class="col-lg-2 control-label">Enter in your Ad Lib</label>
       <div class="col-lg-10">
         <textarea class="form-control" rows="3" id="adLib-input"></textarea>
-        <span class="help-block">Enter in your Ad Lib</span>
+        <span class="help-block"></span>
       </div>
     </div>
     
@@ -75,6 +76,7 @@ var dataRef = firebase.database();
     var age = 0;
     var adLibArray = [];
     var adLib;
+    var storyIndex = "newStory";
     // Capture Button Click
     $("#commit-Lib").on("click", function(event) {
       event.preventDefault();
@@ -90,46 +92,69 @@ var dataRef = firebase.database();
       console.log($("#adLib-input").val().trim())
       adLibArray.push(adLib);
       //Clear out the user Input Text Field
-      $("#adLib-input").empty();
+      
       // Code to push the data to 
-      dataRef.ref().push({
-        name: name,
-        email: email,
-        age: age,
-        adLibArray: adLibArray,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      var storiesRef = dataRef.ref().child("stories");
+      storiesRef.once("value", function(snapshot) {
+        var stories = snapshot.val();
+        var currenStory = stories[storyIndex];
+        // if(storyIndex = "newStory"){
+        //   storyIndex = Object.keys(storiesRef).length+1
+        //   console.log(storyIndex)
+        //   }
+
+        // else if(currenStory){
+        var storySentences = currenStory.adLibArray;
+        storySentences.push(adLib);
+
+        storiesRef.child(storyIndex).set({
+          id: storyIndex,
+          name: name,
+          email: email,
+          age: age,
+          adLibArray: storySentences,
+          dateAdded: firebase.database.ServerValue.TIMESTAMP
+        });
+
+        if (storySentences.length > 0){
+           var lastSentence = storySentences.length-1;
+            $("#prompt-Lib").append(storySentences[lastSentence]);
+        }else {
+            console.log("length of array", adLibArray.length);
+      };
+
+        }
+      
       });
       
-      // console.log(adLibArray);
-      
+      $("#adLib-input").empty();
+      $("#prompt-Lib").empty();
+      $("#defDiv").empty();
+
     });
 
-dataRef.ref().on("child_added", function(childSnapshot) {
+
+// dataRef.ref().on("child_added", function(childSnapshot) {
   
   // console.log("this is the array" , adLibArray);
       // Log everything that's coming out of snapshot
       // console.log(childSnapshot.val().adLib);
       // full list of items to the well
      
-      if (adLibArray.length > 0){
-           var lastSentence = adLibArray.length-1;
-            $("#prompt-Lib").append(childSnapshot.val().adLibArray[lastSentence]);
-      }else {
-        console.log("length of array", adLibArray.length);
-      };
+      
       
      
     // Handle the errors
-    }, function(errorObject) {
-      console.log("Errors handled: " + errorObject.code);
-    });
-    dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-      // Change the HTML to reflect
-      $("#name-display").html(snapshot.val().name);
-      $("#email-display").html(snapshot.val().email);
-      $("#age-display").html(snapshot.val().age);
-      $("#comment-display").html(snapshot.val().comment);
-    });
+    // }, function(errorObject) {
+    //   console.log("Errors handled: " + errorObject.code);
+    // });
+    // dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+    //   // Change the HTML to reflect
+    //   $("#name-display").html(snapshot.val().name);
+    //   $("#email-display").html(snapshot.val().email);
+    //   $("#age-display").html(snapshot.val().age);
+    //   $("#comment-display").html(snapshot.val().comment);
+    // });
  
 
 

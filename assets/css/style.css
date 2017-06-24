@@ -20,9 +20,10 @@ body {
     display: inline-block;
     font-size: 14px;
 }
-.bgPic {
+/*.bgPic {
     background-color: #050b13;
-}
+    overflow: scroll;
+}*/
 
 #leftNav{
  /*   min-height: 100%;*/
@@ -35,7 +36,9 @@ body {
 }
 
 #rightView {
-    min-height: 100vh;
+    height: 100vh;
+    overflow: scroll;
+    background-color: #050b13;
 }
 
 .topPanel {

@@ -31,16 +31,21 @@
     <div class="form-group">
       <label for="textArea" class="col-lg-2 control-label">Textarea</label>
       <div class="col-lg-10">
-        <textarea class="form-control" rows="3" id="adLib-input">test</textarea>
+        <textarea class="form-control" rows="3" id="adLib-input"></textarea>
         <span class="help-block">Enter in your Ad Lib</span>
       </div>
     </div>
     
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-        <button id="noun-input" lexicalCategory="noun" type="reset" class="btn btn-default lexical">Noun</button>
+        <button lexicalCategory="noun" type="reset" class="btn btn-default lexical">Noun</button>
+        <button lexicalCategory="verb" type="reset" class="btn btn-default lexical">Verb</button>
+        <button lexicalCategory="adjective" type="reset" class="btn btn-default lexical">Adjective</button>
+        <button lexicalCategory="adverb" type="reset" class="btn btn-default lexical">Adverb</button>
+        <button lexicalCategory="idiom" type="reset" class="btn btn-default lexical">Idiom</button>
         <button id="commit-Lib" type="submit" class="btn btn-primary">Submit</button>
       </div>
+      <div id="defDiv"></div>
     </div>
   </fieldset>
 </form>
@@ -73,17 +78,20 @@ var dataRef = firebase.database();
     // Capture Button Click
     $("#commit-Lib").on("click", function(event) {
       event.preventDefault();
-      $("#prompt-Lib").empty()
+      $("#prompt-Lib").empty();
       // YOUR TASK!!!
       // Code in the logic for storing and retrieving the most recent user.
       // Don't forget to provide initial data to your Firebase database.
       // name = $("#name-input").val().trim();
       // email = $("#email-input").val().trim();
       // age = $("#age-input").val().trim();
+      //Get the User Input and Trim the spaces.
       adLib = $("#adLib-input").val().trim();
       console.log($("#adLib-input").val().trim())
       adLibArray.push(adLib);
-      // Code for the push
+      //Clear out the user Input Text Field
+      $("#adLib-input").empty();
+      // Code to push the data to 
       dataRef.ref().push({
         name: name,
         email: email,
@@ -107,7 +115,7 @@ dataRef.ref().on("child_added", function(childSnapshot) {
            var lastSentence = adLibArray.length-1;
             $("#prompt-Lib").append(childSnapshot.val().adLibArray[lastSentence]);
       }else {
-        console.log("lenth of array", adLibArray.length);
+        console.log("length of array", adLibArray.length);
       };
       
      
@@ -126,33 +134,30 @@ dataRef.ref().on("child_added", function(childSnapshot) {
 
 
 $(".lexical").click(function(){
-  var queryURL = "https://od-api.oxforddictionaries.com:443/api/v1/wordlist/en/lexicalCategory%3D";
-  var randomWord = "?limit=1"+"&offset=749"+Math.floor(Math.random()*(4000-1+1)+1);
-  var lexical = "";
-  lexical = $(this).attr("lexicalCategory");
-//   document.domain="company.com";
-// $.getJSON("http://od-api.oxforddictionaries.com:443/api/v1/wordlist/en/lexicalCategory%3Dnoun?limit=1&offset=749&app_id=2b5a2074&app_key=2b25cc3f6a462ad4aaf45e7b5869737e&callback=?", function(data){
-//   console.log(data);
-
-// })
+  var lexical = $(this).attr("lexicalCategory");
+  var queryURL = "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech="+lexical+"&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
   $.ajax({
-              url: "https://od-api.oxforddictionaries.com:443/api/v1/wordlist/en/lexicalCategory%3Dnoun?limit=1&offset=749",
-              // queryURL+lexical+randomWord,
-              headers: {
-                "Accept": "application/json",
-                "app_id": "2b5a2074",
-                "app_key": "2b25cc3f6a462ad4aaf45e7b5869737e"
-              },
-              method: "GET",
-              "Access-Control-Allow-Origin": "*"
-              // dataType: 'jsonp'
+        type: "GET",
+        url: queryURL,
+        data: config,
+        success: function(data) {console.log(data);},
+        error: function(response) {console.log(response);}
   })
-      //What will we do with the returned information? (done function)
-            .done(function(response) {
-              console.log(randomWord);
-              console.log(response);
-            });
+  .done(function(data) {
+              $("#adLib-input").append(data.word+" ")
+              var randomWord = data.word;
+              $.ajax({
+                type: "GET",
+                url: "http://api.wordnik.com:80/v4/word.json/"+randomWord+"/definitions?limit=200&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5",
+                data: config,
+                success: function(data) {console.log(data[0].text);}
+                })
+              .done(function(data) {
+                $("#defDiv").append(randomWord+": "+data[0].text+"<br>")
+                });
+  });
 });
+    
 
 
   

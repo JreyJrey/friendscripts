@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FriendScripts</title>
+	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<div id="prompt-Lib">
+	
+</div>
+
+<form class="form-horizontal">
+  <fieldset>
+    <legend>Legend</legend>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" id="adLib-input">test</textarea>
+        <span class="help-block">Enter in your Ad Lib</span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button id="commit-Lib" type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+
+
+
+	
+</body>
+<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+<script type="text/javascript">
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB3tLpkNwJljywfHXOfJiiLmKuyHyKoS50",
+    authDomain: "friendscripts.firebaseapp.com",
+    databaseURL: "https://friendscripts.firebaseio.com",
+    projectId: "friendscripts",
+    storageBucket: "friendscripts.appspot.com",
+    messagingSenderId: "834536402255"
+  };
+  firebase.initializeApp(config);
+
+var dataRef = firebase.database();
+    // Initial Values
+    var name = "";
+    var email = "";
+    var age = 0;
+    var adLibArray = [];
+    var adLib;
+    // Capture Button Click
+    $("#commit-Lib").on("click", function(event) {
+      event.preventDefault();
+      $("#prompt-Lib").empty()
+      // YOUR TASK!!!
+      // Code in the logic for storing and retrieving the most recent user.
+      // Don't forget to provide initial data to your Firebase database.
+      // name = $("#name-input").val().trim();
+      // email = $("#email-input").val().trim();
+      // age = $("#age-input").val().trim();
+      adLib = $("#adLib-input").val().trim();
+      console.log($("#adLib-input").val().trim())
+      adLibArray.push(adLib);
+      // Code for the push
+      dataRef.ref().push({
+        name: name,
+        email: email,
+        age: age,
+        adLibArray: adLibArray,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
+      
+      // console.log(adLibArray);
+      
+    });
+
+dataRef.ref().on("child_added", function(childSnapshot) {
+  
+  // console.log("this is the array" , adLibArray);
+      // Log everything that's coming out of snapshot
+      // console.log(childSnapshot.val().adLib);
+      // full list of items to the well
+     
+      if (adLibArray.length > 0){
+           var lastSentence = adLibArray.length-1;
+            $("#prompt-Lib").append(childSnapshot.val().adLibArray[lastSentence]);
+      }else {
+        console.log("lenth of array", adLibArray.length);
+      };
+      
+     
+    // Handle the errors
+    }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    });
+    dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+      // Change the HTML to reflect
+      $("#name-display").html(snapshot.val().name);
+      $("#email-display").html(snapshot.val().email);
+      $("#age-display").html(snapshot.val().age);
+      $("#comment-display").html(snapshot.val().comment);
+    });
+ 
+  
+
+  
+
+  
+</script>

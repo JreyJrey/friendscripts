@@ -279,3 +279,27 @@ body {
 .navbar-custom .navbar-link:hover {
   color: #c0c0c0;
 }
+
+/*Mark's CSS*/
+.landingPageBtn {
+  background-color: #729f98; /* Green */
+  border: none;
+  color: white;
+  padding: 4px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  border-left: solid black 2px;
+  margin-left: 8px;
+
+
+}
+
+.landingPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 21vw;
+    margin-top: 2vh;
+}

@@ -111,7 +111,7 @@
       var currentText = $(".adLib-input").val();
       $(".adLib-input").empty();
       var lexical = $(this).attr("lexicalCategory");
-      var queryURL = "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech="+lexical+"&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
+      var queryURL = "https://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech="+lexical+"&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
       $.ajax({
         type: "GET",
         url: queryURL,
@@ -125,7 +125,7 @@
         var randomWord = data.word;
         $.ajax({
           type: "GET",
-          url: "http://api.wordnik.com:80/v4/word.json/"+randomWord+"/definitions?limit=200&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5",
+          url: "https://api.wordnik.com:80/v4/word.json/"+randomWord+"/definitions?limit=200&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5",
           data: config,
           success: function(data) {console.log(data[0].text);}
         })

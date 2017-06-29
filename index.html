@@ -21,16 +21,16 @@
     <div class="buttonNav container">
       <div class="col-md-12 landingPage" >
         <ul><button type="button" style="background: #3c7079" class="col-md-6  btn-primary buttonBg landingPageBtn newStoryButt">New Story</button></ul>
-        <ul><button type="button" style="background: #3c7079" class="col-md-6 btn-primary buttonBg landingPageBtn">Join Story</button></ul>
-        <ul><button type="button" style="background: #3c7079" class="col-md-6 btn-primary buttonBg landingPageBtn">Read Story</button></ul>
-        <ul><button type="button" style="background: #3c7079" class="col-md-6 btn-primary buttonBg landingPageBtn" id="kickassbtn">Kickass Story</button></ul>
+        <ul><button type="button" style="background: #3c7079" class="col-md-6 btn-primary buttonBg landingPageBtn joinStoryButt">Join Story</button></ul>
+        <ul><button type="button" style="background: #3c7079" class="col-md-6 btn-primary buttonBg landingPageBtn readStoryButt">Read Story</button></ul>
+        <ul><button type="button" style="background: #3c7079" class="col-md-6 btn-primary buttonBg landingPageBtn editStoryButt" id="kickassbtn">Kickass Story</button></ul>
       </div>
     </div>
   </div>
 
   <!-- Add to existing Story Page -->
   <div class="container mainContain">
-    <div id="leftNav" class="container col-md-3">
+    <div class="container col-md-3 leftNav">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
@@ -38,18 +38,18 @@
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
     </div>
-    <div id="rightView" class="container col-md-9 bgPic">
+    <div class="container col-md-9 bgPic rightView">
       <!--         <h1>Story Prompt</h1> -->
-      <div id="" class="row topPanel">
-        <p id="prompt-Lib">
+      <div class="row topPanel">
+        <p class="prompt-Lib">
         </p>
       </div>
       <nav class="row">
         <div class="buttonNav container">
           <div class="col-md-4">
             <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg newStoryButt">New Story</button>
-            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg">Join Story</button>
-            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg">Read Story</button>
+            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg joinStoryButt">Join Story</button>
+            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg readStoryButt">Read Story</button>
           </div>
           <div class="col-md-5 col-md-offset-2">
             <button lexicalCategory="noun" type="reset" style="background: #3c7079" class="btn btn-default lexical buttonBg">Noun</button>
@@ -64,34 +64,34 @@
       <div class="row">
         <!--   <div class="container"> -->
 
-        <div id="rBottomPanel" class="col-md-12">
+        <div class="col-md-12 rBottomPanel">
           <div class="row panelTitle">
 
             <div class="form-group">
               <label for="exampleTextarea">Enter your Sentence</label>
 
-              <textarea  id="adLib-input" class="form-control" style="min-width: 100%"></textarea>
+              <textarea class="form-control adLib-input" style="min-width: 100%"></textarea>
             </div>
             <div>
-              <button id="commit-Lib" type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary commit-Lib">Submit</button>
             </div>
-            <!--          </div> -->
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="bottomBox col-md-8">
+    
+      <!-- <div class="bottomBox col-md-8">
         <br>
-        <br>
-        <div class="thumbStyle col-md-12"></div>
-      </div>
+        <br> -->
+        <div class="thumbStyle col-md-8"></div>
+      
     </div>
   </div>
 
 <!-- New Story Page -->
 <div class="container newStory">
-    <div id="leftNav" class="container col-md-3">
+    <div class="container col-md-3 leftNav">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
@@ -99,18 +99,18 @@
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
     </div>
-    <div id="rightView" class="container col-md-9 bgPic">
+    <div class="container col-md-9 bgPic rightView">
      <h1>New Story Page</h1>
-      <div id="" class="row topPanel">
-        <p id="prompt-Lib">
+      <div class="row topPanel">
+        <p class="prompt-Lib">
         </p>
       </div>
       <nav class="row">
         <div class="buttonNav container">
           <div class="col-md-4">
-            <button id="newStoryButt" type="button" style="background: #3c7079" class="btn btn-primary buttonBg">New Story</button>
-            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg">Join Story</button>
-            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg">Read Story</button>
+            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg newStoryButt">New Story</button>
+            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg joinStoryButt">Join Story</button>
+            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg readStoryButt">Read Story</button>
           </div>
           <div class="col-md-5 col-md-offset-2">
             <button lexicalCategory="noun" type="reset" style="background: #3c7079" class="btn btn-default lexical buttonBg">Noun</button>
@@ -125,16 +125,16 @@
       <div class="row">
         
 
-        <div id="rBottomPanel" class="col-md-12">
+        <div class="col-md-12 rBottomPanel">
           <div class="row panelTitle">
 
             <div class="form-group">
               <label for="exampleTextarea">Enter your Sentence</label>
 
-              <textarea  id="newStory-input" class="form-control" style="min-width: 100%"></textarea>
+              <textarea class="form-control adLib-input" style="min-width: 100%"></textarea>
             </div>
             <div>
-              <button id="commitNewStory" type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary commit-Lib">Submit</button>
             </div>
             
           </div>
@@ -149,11 +149,10 @@
       </div>
     </div>
   </div>
-  
-<!--Join Story Page -->
 
-  <div class="container joinStory">
-    <div id="leftNav" class="container col-md-3">
+  <!-- Join Story Page -->
+<div class="container joinStory">
+    <div class="container col-md-3 leftNav">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
@@ -161,26 +160,58 @@
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
     </div>
-    <div id="rightView" class="container col-md-9 bgPic">
+    <div class="container col-md-9 bgPic rightView">
      <h1>Join Story Page</h1>
-      <div id="" class="row topPanel">
-        <p id="prompt-Lib">
+      <div class="row topPanel">
+        <p class="prompt-Lib">
         </p>
       </div>
       <nav class="row">
         <div class="buttonNav container">
           <div class="col-md-4">
-            <button id="newStoryButt" type="button" style="background: #3c7079" class="btn btn-primary buttonBg">New Story</button>
-            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg">Join Story</button>
-            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg">Read Story</button>
+            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg newStoryButt">New Story</button>
+            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg joinStoryButt">Join Story</button>
+            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg readStoryButt">Read Story</button>
+          </div> 
+          <div>Pick a Story:
+
           </div>
         </div>
       </nav>
     </div>
   </div>
 
+  <!-- Read Story -->
 
+<div class="container readStory">
+    <div class="container col-md-3 leftNav">
+      <img alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img alt="Brand" width="200px" src="assets/images/Asset.png">
+    </div>
+    <div class="container col-md-9 bgPic rightView">
+     <h1>Read Story Page</h1>
+      <div class="row topPanel">
+        <p class="prompt-Lib">
+        </p>
+      </div>
+      <nav class="row">
+        <div class="buttonNav container">
+          <div class="col-md-4">
+            <button  type="button" style="background: #3c7079" class="btn btn-primary buttonBg newStoryButt">New Story</button>
+            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg joinStoryButt">Join Story</button>
+            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg readStoryButt">Read Story</button>
+          </div> 
+          <div>Read the Story:
 
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
 
 </body>
 
@@ -189,4 +220,3 @@
 
 
 </html>
-

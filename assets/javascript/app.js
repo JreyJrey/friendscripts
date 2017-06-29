@@ -1,9 +1,38 @@
-  // hides the main container
+ // hides the main container
   $(window).on( "load", function(){
-    $(".mainContain").toggle();
-    $(".newStory").toggle();
-    $(".joinStory").toggle();
+    $(".mainContain").hide();
+    $(".newStory").hide();
+    $(".joinStory").hide();
+    $(".readStory").hide();
+
   })
+
+
+  // removes landing page stuff and shows main container
+  $("#kickassbtn").on("click", function(event){
+    $(".mainContain").show();
+    $(".landingPage").hide();
+    $(".joinStory").hide();
+
+  })
+
+  // Join Story Button Function
+    $(".joinStoryButt").click(function(event){
+      $(".joinStory").show();
+      $(".landingPage").hide();
+      $(".mainContain").hide();
+      $(".newStory").hide();
+      $(".readStory").hide();
+});
+
+ // Read Story Button Function
+    $(".readStoryButt").click(function(event){
+      $(".readStory").show();
+      $(".landingPage").hide();
+      $(".mainContain").hide();
+      $(".newStory").hide();
+      $(".joinStory").hide();
+});
 
 
   // Initialize Firebase
@@ -27,14 +56,13 @@
     var storyIndex = 0;
 
     // Capture Button Click
-    $("#commit-Lib").on("click", function(event) {
+    $(".commit-Lib").on("click", function(event) {
       event.preventDefault();
-      $("#prompt-Lib").empty();
-      $(".thumbStyle").val("");
+      $(".prompt-Lib").empty();
       
       //Get the User Input and Trim the spaces.
-      adLib = $("#adLib-input").val().trim();
-      console.log($("#adLib-input").val().trim())
+      adLib = $(".adLib-input").val().trim();
+      console.log($(".adLib-input").val().trim())
       adLibArray.push(adLib);
       
       
@@ -63,7 +91,7 @@
 
           if (storySentences.length > 0){
            var lastSentence = storySentences.length-1;
-           $("#prompt-Lib").append(storySentences[lastSentence]);
+           $(".prompt-Lib").append(storySentences[lastSentence]);
          }else {
           console.log("length of array", adLibArray.length);
         };
@@ -72,16 +100,16 @@
 
       });
       //Clear out the user Input Text Field
-      $("#adLib-input").val("");
-      $("#prompt-Lib").empty();
+      $(".adLib-input").val("");
+      $(".prompt-Lib").empty();
       $(".thumbStyle").empty();
     });
 
 
 
     $(".lexical").click(function(){
-      var currentText = $("#adLib-input").val();
-      $("#adLib-input").empty();
+      var currentText = $(".adLib-input").val();
+      $(".adLib-input").empty();
       var lexical = $(this).attr("lexicalCategory");
       var queryURL = "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech="+lexical+"&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
       $.ajax({
@@ -93,7 +121,7 @@
       })
       .done(function(data) {
 
-        $("#adLib-input").val(currentText + data.word+" ")
+        $(".adLib-input").val(currentText + data.word+" ")
         var randomWord = data.word;
         $.ajax({
           type: "GET",
@@ -108,18 +136,22 @@
     });
 
 // New Story On Click Function
-    $(".newStoryButt").click(function(){
-      $(".newStory").toggle();
-      $(".landingPage").remove();
-      $(".mainContain").remove();
-      $(".joinStory").remove();
+    $(".newStoryButt").click(function(event){
+      $(".newStory").show();
+      $(".landingPage").hide();
+      $(".mainContain").hide();
+      $(".joinStory").hide();
+      $(".readStory").hide();
+
+
+      
 
 
       var storiesRef = dataRef.ref().child("storyCounter");
 
-      var title = $("#titleUserInput");
-      var author = $("#authorUserInput");
-      var age = $("#ageUserInput");
+      var title = $(".titleUserInput");
+      var author = $(".authorUserInput");
+      var age = $(".ageUserInput");
 
       storiesRef.once("value", function(snapshot) {
         var storyCounter = snapshot.val();
@@ -143,26 +175,17 @@
           console.log(snapshot.val());
         });
 
-        $("#commitNewStory").click(function(){
-          event.preventDefault();
-          var newStoryInput = $("#newStory-input").val()
+        $(".commitNewStory").click(function(){
           newStoryID.set({
             title: title,
             author: author,
-            storyPrompt: newStoryInput,
             email: email,
             age: age,
             adLibArray: [],
             dateAdded: firebase.database.ServerValue.TIMESTAMP
           });
         });
-// Join Story Button Function
-$(".joinStory").click(function(){
-      $(".joinStory").toggle();
-      $(".landingPage").remove();
-      $(".mainContain").remove();
-      $(".newStoryButt").remove();
-});
+
 
 });
 });

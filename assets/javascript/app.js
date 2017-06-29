@@ -2,13 +2,9 @@
   $(window).on( "load", function(){
     $(".mainContain").toggle();
     $(".newStory").toggle();
+    $(".joinStory").toggle();
   })
 
-  // removes landing page stuff and shows main container
-  $("#kickassbtn").on("click", function(event){
-    $(".mainContain").toggle();
-    $(".landingPage").remove();
-  })
 
   // Initialize Firebase
   var config = {
@@ -34,6 +30,7 @@
     $("#commit-Lib").on("click", function(event) {
       event.preventDefault();
       $("#prompt-Lib").empty();
+      $(".thumbStyle").val("");
       
       //Get the User Input and Trim the spaces.
       adLib = $("#adLib-input").val().trim();
@@ -77,7 +74,7 @@
       //Clear out the user Input Text Field
       $("#adLib-input").val("");
       $("#prompt-Lib").empty();
-      $("#defDiv").empty();
+      $(".thumbStyle").empty();
     });
 
 
@@ -105,7 +102,7 @@
           success: function(data) {console.log(data[0].text);}
         })
         .done(function(data) {
-          $("#defDiv").append(randomWord+": "+data[0].text+"<br>")
+          $(".thumbStyle").append(randomWord+": "+data[0].text+"<br>")
         });
       });
     });
@@ -115,8 +112,7 @@
       $(".newStory").toggle();
       $(".landingPage").remove();
       $(".mainContain").remove();
-
-      
+      $(".joinStory").remove();
 
 
       var storiesRef = dataRef.ref().child("storyCounter");
@@ -148,17 +144,25 @@
         });
 
         $("#commitNewStory").click(function(){
+          event.preventDefault();
+          var newStoryInput = $("#newStory-input").val()
           newStoryID.set({
             title: title,
             author: author,
+            storyPrompt: newStoryInput,
             email: email,
             age: age,
             adLibArray: [],
             dateAdded: firebase.database.ServerValue.TIMESTAMP
           });
         });
-
-// console.log(storyCounter);
+// Join Story Button Function
+$(".joinStory").click(function(){
+      $(".joinStory").toggle();
+      $(".landingPage").remove();
+      $(".mainContain").remove();
+      $(".newStoryButt").remove();
+});
 
 });
 });

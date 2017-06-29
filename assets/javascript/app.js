@@ -53,6 +53,7 @@
     var age = 0;
     var adLibArray = [];
     var adLib;
+    var storyPrompt;
     var storyIndex = 0;
 
     // Capture Button Click
@@ -143,21 +144,23 @@
       $(".joinStory").hide();
       $(".readStory").hide();
 
-
-      
-
-
+// Variables
       var storiesRef = dataRef.ref().child("storyCounter");
 
       var title = $(".titleUserInput");
       var author = $(".authorUserInput");
       var age = $(".ageUserInput");
+      adLib = $(".adLib-input").val().trim();
+      console.log($(".adLib-input").val().trim())
+      adLibArray.push(adLib);
 
+// Creates New Story Object in Firebase with a story ID.
       storiesRef.once("value", function(snapshot) {
         var storyCounter = snapshot.val();
         storyCounter++;
         var newStoryID = dataRef.ref().child('stories').orderByChild('id').equalTo(storyCounter);
         console.log(storyCounter);
+        console.log("newStoryID: "+newStoryID);
         storiesRef.set(storyCounter);
         console.log(dataRef.ref().child("stories"));
 
@@ -165,24 +168,35 @@
           id: storyCounter,
           title: "",
           author: "",
-          age: "age",
           storyPrompt: "",
           adLibArray: [],
           dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
         
-        newStoryID.on("value", function(snapshot) {
-          console.log(snapshot.val());
-        });
+        // Click Event for Submit Story
+        $(".commitNewStory").click(function(event){
+          newStoryID.on("value", function(snapshot) {
+            var storiesRef = dataRef.ref().child("stories");
+            storiesRef.once("value", function(snapshot) {
+              var stories = snapshot.val();
+              var currenStory = stories[storyIndex];
+        // if(storyIndex = "newStory"){
+        //   storyIndex = Object.keys(storiesRef).length+1
+        //   console.log(storyIndex)
+          // }
 
-        $(".commitNewStory").click(function(){
-          newStoryID.set({
+        // else if(currenStory){
+          var storySentences = currenStory.adLibArray;
+          storySentences.push(adLib);
+//This is where JOrdan Needs to find out how to look up object by Child(ID) in Firebase
+          storiesRef.child(storyCounter).set({
             title: title,
             author: author,
-            email: email,
-            age: age,
+            storyPrompt: "",
             adLibArray: [],
             dateAdded: firebase.database.ServerValue.TIMESTAMP
+          });
+        });
           });
         });
 

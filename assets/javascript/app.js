@@ -1,4 +1,4 @@
- // hides the main container
+ // hides the main container  
   $(window).on( "load", function(){
     $(".mainContain").hide();
     $(".newStory").hide();
@@ -13,8 +13,17 @@
     $(".mainContain").show();
     $(".landingPage").hide();
     $(".joinStory").hide();
-
+    lexical(".adLib-input");
   })
+
+  // New Story On Click Function
+    $(".newStoryButt").click(function(event){
+      $(".newStory").show();
+      $(".landingPage").hide();
+      $(".mainContain").hide();
+      $(".joinStory").hide();
+      $(".readStory").hide();
+    })
 
   // Join Story Button Function
     $(".joinStoryButt").click(function(event){
@@ -106,11 +115,11 @@
       $(".thumbStyle").empty();
     });
 
-
-
+  // Mark turned "lexical" into a function so we can easily call it and pass in different classes of adLib-input
+  function lexical(adlibArg){
     $(".lexical").click(function(){
-      var currentText = $(".adLib-input").val();
-      $(".adLib-input").empty();
+      var currentText = $(adlibArg).val();
+      $(adlibArg).empty();
       var lexical = $(this).attr("lexicalCategory");
       var queryURL = "https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech="+lexical+"&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
       $.ajax({
@@ -122,7 +131,7 @@
       })
       .done(function(data) {
 
-        $(".adLib-input").val(currentText + data.word+" ")
+        $(adlibArg).val(currentText + data.word+" ")
         var randomWord = data.word;
         $.ajax({
           type: "GET",
@@ -135,23 +144,20 @@
         });
       });
     });
+}
+
 
 // New Story On Click Function
     $(".newStoryButt").click(function(event){
-      $(".newStory").show();
-      $(".landingPage").hide();
-      $(".mainContain").hide();
-      $(".joinStory").hide();
-      $(".readStory").hide();
-
+    lexical(".adLib-input2");
 // Variables
       var storiesRef = dataRef.ref().child("storyCounter");
 
       var title = $(".titleUserInput");
       var author = $(".authorUserInput");
       var age = $(".ageUserInput");
-      adLib = $(".adLib-input").val().trim();
-      console.log($(".adLib-input").val().trim())
+      adLib = $(".adLib-input2").val().trim();
+      console.log($(".adLib-input2").val().trim())
       adLibArray.push(adLib);
 
 // Creates New Story Object in Firebase with a story ID.
@@ -189,6 +195,9 @@
           var storySentences = currenStory.adLibArray;
           storySentences.push(adLib);
 //This is where JOrdan Needs to find out how to look up object by Child(ID) in Firebase
+
+// Maybe limit queries like this will work?
+// curl 'https://console.firebase.google.com/project/friendscripts/database/data/stories.json?orderBy="id"&equalTo=NewStoryID&print=pretty'
           storiesRef.child(storyCounter).set({
             title: title,
             author: author,

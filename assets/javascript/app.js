@@ -64,6 +64,8 @@
     var adLib;
     var storyPrompt;
     var storyIndex = 0;
+    var randomWordLength = "";
+    var maxCharCount = 150;
 
     // Capture Button Click
     $(".commit-Lib").on("click", function(event) {
@@ -116,7 +118,7 @@
     });
 
   // Mark turned "lexical" into a function so we can easily call it and pass in different classes of adLib-input
-  function lexical(adlibArg){
+  function lexical(adlibArg, char){
     $(".lexical").click(function(){
       var currentText = $(adlibArg).val();
       $(adlibArg).empty();
@@ -131,8 +133,20 @@
       })
       .done(function(data) {
 
-        $(adlibArg).val(currentText + data.word+" ")
         var randomWord = data.word;
+        randomWordLength = randomWord.length;
+        var length = $(adlibArg).val().length;
+        var charRemain = maxCharCount - length;
+
+        if (charRemain > randomWordLength) {
+          $(adlibArg).val(currentText + data.word+" ");
+          $(char).text("Characters Remaining: " + charRemain);
+        } else {
+          // $('.lexical').off('click');
+          $('#insufficientChar').text("Not Enough Characters Remaining For The Button You Just Clicked");
+          $(char).text("Characters Remaining: " + charRemain);
+        }
+        
         $.ajax({
           type: "GET",
           url: "https://api.wordnik.com/v4/word.json/"+randomWord+"/definitions?limit=200&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5",
@@ -146,10 +160,22 @@
     });
 }
 
+function charCount(adlibArg, char){
+  $(adlibArg).keyup(function() {
+    var length = $(this).val().length;
+    var charRemain = maxCharCount - length;
+    if (charRemain >= 0) {
+        $(char).text("Characters Remaining: " + charRemain);
+    }
+  })
+}
 
 // New Story On Click Function
     $(".newStoryButt").click(function(event){
-    lexical(".adLib-input2");
+    lexical(".adLib-input2", "#charCount");
+    charCount(".adLib-input2", "#charCount");
+
+
 // Variables
       var storiesRef = dataRef.ref().child("storyCounter");
 

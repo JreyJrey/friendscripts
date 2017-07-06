@@ -70,7 +70,8 @@
             <div class="form-group">
               <label for="exampleTextarea">Enter your Sentence</label>
 
-              <textarea class="form-control adLib-input" style="min-width: 100%"></textarea>
+              <textarea maxlength = "150" class="form-control adLib-input" style="min-width: 100%"></textarea>
+              <!-- <div id="charCount">150</div> -->
             </div>
             <div>
               <button type="submit" class="btn btn-primary commit-Lib">Submit</button>
@@ -132,7 +133,9 @@
         <div class="form-group">
           <label for="exampleTextarea">Enter your Sentence</label>
 
-          <textarea class="form-control adLib-input2" style="min-width: 100%"></textarea>
+          <textarea maxlength = "150" class="form-control adLib-input2" style="min-width: 100%"></textarea>
+          <div id="charCount">Characters Remaining: 150</div>
+          <div id="insufficientChar"></div>
         </div>
         <div>
           <button type="submit" class="btn btn-primary commitNewStory">Submit</button>

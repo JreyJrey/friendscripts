@@ -142,8 +142,6 @@
           $(adlibArg).val(currentText + data.word+" ");
           $(char).text("Characters Remaining: " + charRemain);
         } else {
-          // $('.lexical').off('click');
-          $('#insufficientChar').text("Not Enough Characters Remaining For The Button You Just Clicked");
           $(char).text("Characters Remaining: " + charRemain);
         }
         

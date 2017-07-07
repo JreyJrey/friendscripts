@@ -140,6 +140,7 @@
     $(".newStoryButt").click(function(event){
       $(".newStory").show();
       $(".landingPage").hide();
+      $(".hoverStyle").hide();
       $(".mainContain").hide();
       $(".joinStory").hide();
       $(".readStory").hide();

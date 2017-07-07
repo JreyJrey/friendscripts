@@ -25,6 +25,8 @@
     $(".readStory").hide();
   })
 
+    $(".prompt-Lib").readRemaining();
+
   // Join Story Button Function
   $(".joinStoryButt").click(function(event){
     $(".joinStory").show();
@@ -43,6 +45,10 @@
   $(".newStory").hide();
   $(".joinStory").hide();
 });
+
+    $(".speakStoryButt").click(function(event){
+      responsiveVoice.speak(storyPath.storyPrompt+" "+storyPath.adLibArray.join(''), "UK English Female", {pitch: 1, rate: 0});
+    })
 
 
   // Initialize Firebase
@@ -64,8 +70,12 @@
     var adLibArray = [];
     var adLib;
     var storyPrompt;
+
     var storyIndex;
     var storyPath;
+    var randomWordLength = "";
+    var maxCharCount = 150;
+
 
     // Capture Button Click
     $(".commit-Lib").on("click", function(event) {
@@ -84,8 +94,8 @@
         var stories = snapshot.val();
         var currenStory = stories[storyIndex];
         
-          var storySentences = currenStory.adLibArray;
-          var storyPrompt = currenStory.storyPrompt
+          var storySentences = currenStory["adLibArray"];
+          var storyPrompt = currenStory["storyPrompt"]
           storySentences.push(adLib);
           console.log(storyPrompt);
           
@@ -115,7 +125,7 @@
   });
 
   // Mark turned "lexical" into a function so we can easily call it and pass in different classes of adLib-input
-  function lexical(adlibArg){
+  function lexical(adlibArg, char){
     $(".lexical").click(function(){
       var currentText = $(adlibArg).val();
       $(adlibArg).empty();
@@ -130,8 +140,18 @@
       })
       .done(function(data) {
 
-        $(adlibArg).val(currentText + data.word+" ")
         var randomWord = data.word;
+        randomWordLength = randomWord.length;
+        var length = $(adlibArg).val().length;
+        var charRemain = maxCharCount - length;
+
+        if (charRemain > randomWordLength) {
+          $(adlibArg).val(currentText + data.word+" ");
+          $(char).text("Characters Remaining: " + charRemain);
+        } else {
+          $(char).text("Characters Remaining: " + charRemain);
+        }
+        
         $.ajax({
           type: "GET",
           url: "https://api.wordnik.com/v4/word.json/"+randomWord+"/definitions?limit=200&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5",
@@ -145,10 +165,22 @@
     });
   }
 
+function charCount(adlibArg, char){
+  $(adlibArg).keyup(function() {
+    var length = $(this).val().length;
+    var charRemain = maxCharCount - length;
+    if (charRemain >= 0) {
+        $(char).text("Characters Remaining: " + charRemain);
+    }
+  })
+}
 
 // New Story On Click Function
-$(".newStoryButt").click(function(event){
-  lexical(".adLib-input2");
+    $(".newStoryButt").click(function(event){
+    lexical(".adLib-input2", "#charCount");
+    charCount(".adLib-input2", "#charCount");
+
+
 // Variables
 var storiesRef = dataRef.ref().child("storyCounter");
 var title = $(".titleUserInput");

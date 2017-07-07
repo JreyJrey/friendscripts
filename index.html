@@ -23,7 +23,7 @@
         <ul><button type="button" style="background: #3c7079" class="col-md-6  btn-primary buttonBg landingPageBtn newStoryButt">New Story</button></ul>
         <ul><button type="button" style="background: #3c7079" class="col-md-6 btn-primary buttonBg landingPageBtn joinStoryButt">Join Story</button></ul>
         <ul><button type="button" style="background: #3c7079" class="col-md-6 btn-primary buttonBg landingPageBtn readStoryButt">Read Story</button></ul>
-        <ul><button type="button" style="background: #3c7079" class="col-md-6 btn-primary buttonBg landingPageBtn editStoryButt" id="kickassbtn">Kickass Story</button></ul>
+        <ul><button type="button" style="background: #3c7079" class="col-md-6 btn-primary buttonBg landingPageBtn editStoryButt" id="editStoryButt">Kickass Story</button></ul>
       </div>
     </div>
   </div>
@@ -130,8 +130,11 @@
       <div class="row panelTitle">
 
         <div class="form-group">
+          <label for="exampleTextarea">Name your Story</label>
+          <textarea class="form-control userTitle" style="min-width: 100%"></textarea>
+          <label for="exampleTextarea">Take Credit for your Story</label>
+          <textarea class="form-control userAuthor" style="min-width: 100%"></textarea>
           <label for="exampleTextarea">Enter your Sentence</label>
-
           <textarea class="form-control adLib-input2" style="min-width: 100%"></textarea>
         </div>
         <div>
@@ -175,7 +178,7 @@
         <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg joinStoryButt">Join Story</button>
         <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg readStoryButt">Read Story</button>
       </div> 
-      <div>Pick a Story:
+      <div class="editStoryDiv">Pick a Story:
 
       </div>
     </div>

@@ -1,6 +1,6 @@
  // hides the main container  
  $(window).on( "load", function(){
-  $(".mainContain").hide();
+  $(".editStory").hide();
   $(".newStory").hide();
   $(".joinStory").hide();
   $(".readStory").hide();
@@ -11,7 +11,7 @@
 
   // removes landing page stuff and shows main container
   $("#editStoryButt").on("click", function(event){
-    $(".mainContain").show();
+    $(".editStory").show();
     $(".landingPage").hide();
     $(".joinStory").hide();
     lexical(".adLib-input");
@@ -21,7 +21,7 @@
   $(".newStoryButt").click(function(event){
     $(".newStory").show();
     $(".landingPage").hide();
-    $(".mainContain").hide();
+    $(".editStory").hide();
     $(".joinStory").hide();
     $(".readStory").hide();
   })
@@ -32,7 +32,7 @@
   $(".joinStoryButt").click(function(event){
     $(".joinStory").show();
     $(".landingPage").hide();
-    // $(".mainContain").hide();
+    $(".editStory").hide();
     $(".newStory").hide();
     $(".readStory").hide();
     $(".hoverStyle").hide();
@@ -43,7 +43,7 @@
 
   $(".readStory").show();
   $(".landingPage").hide();
-  $(".mainContain").hide();
+  $(".editStory").hide();
   $(".newStory").hide();
   $(".joinStory").hide();
 });
@@ -85,8 +85,8 @@
       $(".prompt-Lib").empty();
       
       //Get the User Input and Trim the spaces.
-      adLib = $(".adLib-input").val().trim();
-      console.log($(".adLib-input").val().trim())
+      adLib = $(".adLib-input2").val().trim();
+      console.log($(".adLib-input2").val().trim())
       // adLibArray.push(adLib);
       
       
@@ -182,7 +182,7 @@ function charCount(adlibArg, char){
       $(".newStory").show();
       $(".landingPage").hide();
       $(".hoverStyle").hide();
-      $(".mainContain").hide();
+      $(".editStory").hide();
       $(".joinStory").hide();
       $(".readStory").hide();
 
@@ -284,7 +284,7 @@ $(".joinStoryButt").click(function(){
                   console.log(story)
                   storyPath = story;
                   $(".prompt-Lib").empty();
-                  $(".mainContain").show();
+                  $(".editStory").show();
                   $(".landingPage").hide();
                   $(".joinStory").hide();
                   lexical(".adLib-input");

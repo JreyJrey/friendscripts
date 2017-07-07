@@ -1,6 +1,6 @@
  // hides the main container  
  $(window).on( "load", function(){
-  $(".mainContain").hide();
+  $(".editStoryPage").hide();
   $(".newStory").hide();
   $(".joinStory").hide();
   $(".readStory").hide();
@@ -11,7 +11,7 @@
 
   // removes landing page stuff and shows main container
   $("#editStoryButt").on("click", function(event){
-    $(".mainContain").show();
+    $(".editStoryPage").show();
     $(".landingPage").hide();
     $(".joinStory").hide();
     lexical(".adLib-input");
@@ -21,7 +21,7 @@
   $(".newStoryButt").click(function(event){
     $(".newStory").show();
     $(".landingPage").hide();
-    $(".mainContain").hide();
+    $(".editStoryPage").hide();
     $(".joinStory").hide();
     $(".readStory").hide();
   })
@@ -32,7 +32,7 @@
   $(".joinStoryButt").click(function(event){
     $(".joinStory").show();
     $(".landingPage").hide();
-    // $(".mainContain").hide();
+    // $(".editStoryPage").hide();
     $(".newStory").hide();
     $(".readStory").hide();
     $(".hoverStyle").hide();
@@ -43,7 +43,7 @@
 
   $(".readStory").show();
   $(".landingPage").hide();
-  $(".mainContain").hide();
+  $(".editStoryPage").hide();
   $(".newStory").hide();
   $(".joinStory").hide();
 });
@@ -182,7 +182,7 @@ function charCount(adlibArg, char){
       $(".newStory").show();
       $(".landingPage").hide();
       $(".hoverStyle").hide();
-      $(".mainContain").hide();
+      $(".editStoryPage").hide();
       $(".joinStory").hide();
       $(".readStory").hide();
 
@@ -284,7 +284,7 @@ $(".joinStoryButt").click(function(){
                   console.log(story)
                   storyPath = story;
                   $(".prompt-Lib").empty();
-                  $(".mainContain").show();
+                  $(".editStoryPage").show();
                   $(".landingPage").hide();
                   $(".joinStory").hide();
                   lexical(".adLib-input");

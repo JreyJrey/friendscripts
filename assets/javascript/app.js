@@ -186,7 +186,9 @@
           success: function(data) {console.log(data[0].text);}
         })
         .done(function(data) {
-          $(".thumbStyle").append(randomWord+": "+data[0].text+"<br>")
+          $(".thumbStyle").prepend(randomWord+": "+data[0].text+"<br>");
+          //Keep Definitions textarea scrolled to the bottom
+          $(".thumbStyle").each(function() {this.scrollTop = 0;})
         });
       });
     });
@@ -229,7 +231,9 @@ $(".lexicalNew").click(function(){
           success: function(data) {console.log(data[0].text);}
         })
         .done(function(data) {
-          $(".thumbStyle").append(randomWord+": "+data[0].text+"<br>")
+          $(".thumbStyle").prepend(randomWord+": "+data[0].text+"<br>");
+          //Keep Definitions textarea scrolled to the bottom
+          $(".thumbStyle").each(function() {this.scrollTop = 0;})
         });
       });
     });

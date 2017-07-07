@@ -49,8 +49,54 @@
   $(".hoverStyle").hide()
   $(".readStoryBttnPage").hide();
   $(".prompt-Lib").empty();
-  $(".prompt-Lib").append(storyPath.storyPrompt+" "+storyPath.adLibArray.join(''))
-});
+  $(".prompt-Lib").append(storyPath.storyPrompt+" "+storyPath.adLibArray.join(' '))
+//   console.log(id);
+//   var storyCounterRef = dataRef.ref().child("storyCounter");
+//   storyCounterRef.once("value", function(counterSnapshot) {
+//     var storyCounter = counterSnapshot.val();
+//     console.log(storyCounter);
+//     var storiesRef = dataRef.ref().child("stories");
+//     storiesRef.once("value", function(storiesSnapshot) {
+//       var storiesObj = storiesSnapshot.val();
+//       var loopStoryID = dataRef.ref().child("stories").orderByChild('id').equalTo(id);
+//       console.log(loopStoryID);
+//         loopStoryID.once("value", function(storyWithId) {
+//           var storiesWithLoopStoryId = storyWithId.val();
+//           console.log(storiesWithLoopStoryId);
+//           var storyKey = Object.keys(storiesWithLoopStoryId)[0];
+//           console.log(storyKey)
+//           var story = storiesWithLoopStoryId[storyKey];
+//           var newButt = $("<button>", {
+//                 text: story.title +": "+story.storyPrompt,
+//                 click: function() {
+//                   var storyId = $(this).attr("data-story-id");
+//                   storyIndex = storyId;
+//                   storyPath = story;
+//                   // console.log(storyId);
+//                   // console.log(storyId);
+//                   // console.log(story)
+//                   // console.log(storyPath);
+//                   $(".prompt-Lib").empty();
+//                   $(".landingPage").hide();
+//                   $(".joinStory").hide();
+//                   $("#editStoryCommit").val("");
+//                   $(".editStory").show();
+//                   $(".thumbStyle").empty();
+//                   // console.log(story.adLibArray[1])
+//                   if(story.adLibArray[1]){
+//                     var lastSentence = story.adLibArray.length - 1;
+//                     $(".prompt-Lib").append(story.adLibArray[lastSentence]);
+//                   }
+//                   else{$(".prompt-Lib").append(story.storyPrompt)};
+//                 }
+//               });
+//   newButt.attr("data-story-id", storyKey);
+//   $("#readButtDiv").empty();
+//   $("#readButtDiv").append(newButt);
+// });
+// });
+// });
+}); 
 
 //Buttons to Read Stories
  $(".readStoryMainButt").click(function(event){
@@ -92,9 +138,9 @@
     var storyPath;
     var randomWordLength = "";
     var maxCharCount = 150;
+    var id;
 
-
-    // Capture Button Click
+     // Capture Button Click
     $(".commit-Lib").on("click", function(event) {
       event.preventDefault();
       $(".prompt-Lib").empty();
@@ -115,20 +161,19 @@
       var storiesRef = dataRef.ref().child("stories");
       storiesRef.once("value", function(snapshot) {
         var stories = snapshot.val();
+        // console.log(stories);
         var currenStory = stories[storyIndex];
-         // console.log(currentStory);
-        
+        console.log(currenStory)
           var storySentences = currenStory["adLibArray"];
           var storyPrompt = currenStory["storyPrompt"]
           console.log(adLib);
           storySentences.push(adLib);
           console.log(storySentences);
-          var firebaseAdLib = storiesRef.child(storyIndex+"/adLibArray")
+          console.log(storyIndex);
 
           //Set the adLibArray in Firebase
-          console.log(storiesRef.child(storyIndex+"/adLibArray"));
-          firebaseAdLib.set(storySentences);
-
+          storiesRef.child(storyIndex+"/adLibArray").set(storySentences);
+          console.log(storiesRef.child(storyIndex+"/adLibArray"))
           if (storySentences.length > 0){
            var lastSentence = storySentences.length-1;
            $(".prompt-Lib").append(storySentences[lastSentence]);
@@ -261,7 +306,9 @@ $("#newStoryText").keyup(function() {
 
 // New Story On Click Function
 $(".newStoryButt").click(function(event){
-  $("#newStoryText").empty();
+  $("#newStoryText").val("");
+  $(".userAuthor").val("");
+  $(".userTitle").val("");
   $(".newStory").show();
   $(".landingPage").hide();
   $(".hoverStyle").hide();
@@ -393,6 +440,7 @@ $(".joinStoryButt").click(function(){
                   var storyId = $(this).attr("data-story-id");
                   storyIndex = storyId;
                   storyPath = story;
+                  id = i;
                   // console.log(storyId);
                   // console.log(storyId);
                   // console.log(story)
@@ -427,7 +475,7 @@ $(".readStoryMainButt").click(function(){
   storyCounterRef.once("value", function(counterSnapshot) {
     var storyCounter = counterSnapshot.val();
     console.log(storyCounter);
-    var numberOfStories = 0
+    var numberOfStories = 1
     // storyCounter - 10;
     console.log(numberOfStories)
     var storiesRef = dataRef.ref().child("stories");

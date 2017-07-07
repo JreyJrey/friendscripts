@@ -25,6 +25,8 @@
       $(".readStory").hide();
     })
 
+    $(".prompt-Lib").readRemaining();
+
   // Join Story Button Function
     $(".joinStoryButt").click(function(event){
       $(".joinStory").show();
@@ -42,6 +44,10 @@
       $(".newStory").hide();
       $(".joinStory").hide();
 });
+
+    $(".speakStoryButt").click(function(event){
+      responsiveVoice.speak("f;ioj;oijdfjasd;fjas;jfaio;wjefa;skdjfao;isdjflskdjfs;lkdjf;asldjfal;skdjfal;ksdjfl;sjkdfiojoijo", "UK English Female", {pitch: 1, rate: 0});
+    })
 
 
   // Initialize Firebase

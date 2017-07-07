@@ -54,7 +54,7 @@
   </div>
 
   <!-- Add to existing Story Page -->
-  <div class="container mainContain">
+  <!-- <div class="container mainContain">
     <div class="container col-md-3 leftNav">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
       <img alt="Brand" width="200px" src="assets/images/Asset.png">
@@ -70,11 +70,6 @@
       </div>
       <nav class="row">
         <div class="buttonNav container">
-          <div class="col-md-4">
-            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg newStoryButt">New Story</button>
-            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg joinStoryButt">Join Story</button>
-            <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg readStoryButt">Read Story</button>
-          </div>
           <div class="col-md-5 col-md-offset-2">
             <button lexicalCategory="noun" type="reset" style="background: #3c7079" class="btn btn-default lexical buttonBg">Noun</button>
             <button lexicalCategory="verb" type="reset" style="background: #3c7079" class="btn btn-default lexical buttonBg">Verb</button>
@@ -102,7 +97,7 @@
         <div class="thumbStyle col-md-8"></div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- Edit Story Page -->
     <div class="editStory">
 <div class="container col-md-3 leftNav">
@@ -135,13 +130,14 @@
 <div class="row">
   <div class="col-md-12 rBottomPanel">
     <div class="row panelTitle">
-      <div class="form-group">
-        <label for="exampleTextarea">Enter your Sentence</label>
-        <textarea class="form-control adLib-input" style="min-width: 100%"></textarea>
-      </div>
+          <div class="form-group">
+            <label for="exampleTextarea">Enter your Sentence</label>
+            <textarea maxlength="150" class="form-control adLib-input2" style="min-width: 100%"></textarea>
+            <div class="charCount">Characters Remaining: 150</div>
+          </div>
       <div>
         <div class="subButtonPosition">
-          <button type="submit" class="btn btn-primary commit-Lib commitNewStory col-md-3 col-md-offset-3">Submit</button>
+          <button type="submit" class="btn btn-primary commit-Lib col-md-3 col-md-offset-3">Submit</button>
         </div>
       </div>
       <br>
@@ -159,6 +155,7 @@
 </div>
 </div>
 </div>
+
 <!-- New Story Page -->
 <div class="newStory">
   <div class="container col-md-3 leftNav">
@@ -188,7 +185,8 @@
           <br>
           <div class="form-group">
             <label for="exampleTextarea">Enter your Sentence</label>
-            <textarea class="form-control adLib-input2" style="min-width: 100%"></textarea>
+            <textarea maxlength="150" class="form-control adLib-input2" style="min-width: 100%"></textarea>
+            <div class="charCount">Characters Remaining: 150</div>
           </div>
           <button lexicalCategory="noun" type="reset" style="background: #005077" class="btn btn-default lexical buttonBg col-md-2">Noun</button>
           <button lexicalCategory="verb" type="reset" style="background: #005077" class="btn btn-default lexical buttonBg col-md-2">Verb</button>
@@ -215,8 +213,8 @@
         </div>
     </div>
   </div>
-</div>
-</div>
+  </div>
+  </div>
 
 
   <!-- Join Story Page -->
@@ -233,6 +231,7 @@
       <div class="editStoryDiv">Pick a Story :</div>
     </div>
   </div>
+
   <!-- Read Story -->
   <div class="container readStory">
     <div class="container col-md-3 leftNav">

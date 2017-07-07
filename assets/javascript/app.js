@@ -1,27 +1,25 @@
  // hides the main container  
  $(window).on( "load", function(){
-  $(".editStoryPage").hide();
+  $(".editStory").hide();
   $(".newStory").hide();
   $(".joinStory").hide();
   $(".readStory").hide();
-  $(".editStory").hide();
-
 })
 
 
   // removes landing page stuff and shows main container
   $("#editStoryButt").on("click", function(event){
-    $(".editStoryPage").show();
+    $(".editStory").show();
     $(".landingPage").hide();
     $(".joinStory").hide();
-    lexical(".adLib-input");
+    lexical(".adLib-input2");
   })
 
   // New Story On Click Function
   $(".newStoryButt").click(function(event){
     $(".newStory").show();
     $(".landingPage").hide();
-    $(".editStoryPage").hide();
+    $(".editStory").hide();
     $(".joinStory").hide();
     $(".readStory").hide();
   })
@@ -32,7 +30,7 @@
   $(".joinStoryButt").click(function(event){
     $(".joinStory").show();
     $(".landingPage").hide();
-    // $(".editStoryPage").hide();
+    $(".editStory").hide();
     $(".newStory").hide();
     $(".readStory").hide();
     $(".hoverStyle").hide();
@@ -40,10 +38,9 @@
 
  // Read Story Button Function
  $(".readStoryButt").click(function(event){
-
   $(".readStory").show();
   $(".landingPage").hide();
-  $(".editStoryPage").hide();
+  $(".editStory").hide();
   $(".newStory").hide();
   $(".joinStory").hide();
 });
@@ -85,8 +82,8 @@
       $(".prompt-Lib").empty();
       
       //Get the User Input and Trim the spaces.
-      adLib = $(".adLib-input").val().trim();
-      console.log($(".adLib-input").val().trim())
+      adLib = $(".adLib-input2").val().trim();
+      console.log($(".adLib-input2").val().trim())
       // adLibArray.push(adLib);
       
       
@@ -120,17 +117,20 @@
 
       });
       //Clear out the user Input Text Field
-      $(".adLib-input").val("");
+      $(".adLib-input2").val("");
       $(".prompt-Lib").empty();
       $(".thumbStyle").empty();
+      $(".charCount").text("Characters Remaining: 150")
     // }
   });
 
   // Mark turned "lexical" into a function so we can easily call it and pass in different classes of adLib-input
-  function lexical(adlibArg, char){
+  // function lexical(".adLib-input2", char){
     $(".lexical").click(function(){
-      var currentText = $(adlibArg).val();
-      $(adlibArg).empty();
+      event.preventDefault();
+      var currentText = $(".adLib-input2").val();
+      console.log(currentText);
+      // $(".adLib-input2").empty();
       var lexical = $(this).attr("lexicalCategory");
       var queryURL = "https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech="+lexical+"&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
       $.ajax({
@@ -144,14 +144,16 @@
 
         var randomWord = data.word;
         randomWordLength = randomWord.length;
-        var length = $(adlibArg).val().length;
-        var charRemain = maxCharCount - length;
+        var length = $(".adLib-input2").val().length;
 
-        if (charRemain > randomWordLength) {
-          $(adlibArg).val(currentText + data.word+" ");
-          $(char).text("Characters Remaining: " + charRemain);
-        } else {
-          $(char).text("Characters Remaining: " + charRemain);
+        var charRemain = maxCharCount - length - randomWordLength;
+
+        if (charRemain >= randomWordLength) {
+          $(".adLib-input2").val(currentText + data.word+" ");
+          $(".charCount").text("Characters Remaining: " + charRemain);
+        } else if(charRemain <= 0){
+          charRemain = 0;
+          $(".charCount").text("Characters Remaining: " + charRemain);
         }
         
         $.ajax({
@@ -165,29 +167,30 @@
         });
       });
     });
-  }
+  // }
 
-function charCount(adlibArg, char){
-  $(adlibArg).keyup(function() {
+// function charCount(".adLib-input2", char){
+  $(".adLib-input2").keyup(function() {
     var length = $(this).val().length;
     var charRemain = maxCharCount - length;
     if (charRemain >= 0) {
-        $(char).text("Characters Remaining: " + charRemain);
+        $(".charCount").text("Characters Remaining: " + charRemain);
     }
   })
-}
+// }
 
 // New Story On Click Function
     $(".newStoryButt").click(function(event){
+      $(".adLib-input2").empty();
       $(".newStory").show();
       $(".landingPage").hide();
       $(".hoverStyle").hide();
-      $(".editStoryPage").hide();
+      $(".editStory").hide();
       $(".joinStory").hide();
       $(".readStory").hide();
 
-    lexical(".adLib-input2", "#charCount");
-    charCount(".adLib-input2", "#charCount");
+    // lexical(".adLib-input2", ".charCount");
+    // charCount(".adLib-input2", ".charCount");
 
 // Variables
 var storiesRef = dataRef.ref().child("storyCounter");
@@ -258,6 +261,7 @@ newStoryID.on("value", function(snapshot) {
 
 $(".joinStoryButt").click(function(){
   $(".editStoryDiv").empty();
+  $(".adLib-input2").val("");
   var storyCounterRef = dataRef.ref().child("storyCounter");
   storyCounterRef.once("value", function(counterSnapshot) {
     var storyCounter = counterSnapshot.val();
@@ -284,12 +288,10 @@ $(".joinStoryButt").click(function(){
                   console.log(story)
                   storyPath = story;
                   $(".prompt-Lib").empty();
-                  $(".editStoryPage").show();
+                  $(".adLib-input2").val("");
+                  $(".editStory").show();
                   $(".landingPage").hide();
                   $(".joinStory").hide();
-                  lexical(".adLib-input");
-                  // Show main container -done-
-                  // Populate it with the last ad lib -done-
                   console.log(story.adLibArray[1])
                   if(story.adLibArray[1]){
                     var lastSentence = story.adLibArray.length - 1;
@@ -301,7 +303,8 @@ $(".joinStoryButt").click(function(){
                 }
               });
           newButt.attr("data-story-id", storyKey);
-          $(".editStoryDiv").append(newButt)
+          $(".editStoryDiv").append(newButt);
+          // $(".adLib-input2").empty();
         });
       }
     });

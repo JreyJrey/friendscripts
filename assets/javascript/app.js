@@ -115,18 +115,19 @@
       var storiesRef = dataRef.ref().child("stories");
       storiesRef.once("value", function(snapshot) {
         var stories = snapshot.val();
-        // console.log(stories);
         var currenStory = stories[storyIndex];
+         // console.log(currentStory);
         
           var storySentences = currenStory["adLibArray"];
           var storyPrompt = currenStory["storyPrompt"]
           console.log(adLib);
           storySentences.push(adLib);
           console.log(storySentences);
-          console.log(storyIndex);
+          var firebaseAdLib = storiesRef.child(storyIndex+"/adLibArray")
 
           //Set the adLibArray in Firebase
-          storiesRef.child(storyIndex+"/adLibArray").set(storySentences);
+          console.log(storiesRef.child(storyIndex+"/adLibArray"));
+          firebaseAdLib.set(storySentences);
 
           if (storySentences.length > 0){
            var lastSentence = storySentences.length-1;

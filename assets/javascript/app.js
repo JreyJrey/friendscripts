@@ -1,4 +1,4 @@
- // hides the main container
+ // hides the main container  
   $(window).on( "load", function(){
     $(".mainContain").hide();
     $(".newStory").hide();
@@ -13,8 +13,19 @@
     $(".mainContain").show();
     $(".landingPage").hide();
     $(".joinStory").hide();
-
+    lexical(".adLib-input");
   })
+
+  // New Story On Click Function
+    $(".newStoryButt").click(function(event){
+      $(".newStory").show();
+      $(".landingPage").hide();
+      $(".mainContain").hide();
+      $(".joinStory").hide();
+      $(".readStory").hide();
+    })
+
+    $(".prompt-Lib").readRemaining();
 
   // Join Story Button Function
     $(".joinStoryButt").click(function(event){
@@ -33,6 +44,10 @@
       $(".newStory").hide();
       $(".joinStory").hide();
 });
+
+    $(".speakStoryButt").click(function(event){
+      responsiveVoice.speak("f;ioj;oijdfjasd;fjas;jfaio;wjefa;skdjfao;isdjflskdjfs;lkdjf;asldjfal;skdjfal;ksdjfl;sjkdfiojoijo", "UK English Female", {pitch: 1, rate: 0});
+    })
 
 
   // Initialize Firebase
@@ -55,6 +70,8 @@
     var adLib;
     var storyPrompt;
     var storyIndex = 0;
+    var randomWordLength = "";
+    var maxCharCount = 150;
 
     // Capture Button Click
     $(".commit-Lib").on("click", function(event) {
@@ -106,11 +123,11 @@
       $(".thumbStyle").empty();
     });
 
-
-
+  // Mark turned "lexical" into a function so we can easily call it and pass in different classes of adLib-input
+  function lexical(adlibArg, char){
     $(".lexical").click(function(){
-      var currentText = $(".adLib-input").val();
-      $(".adLib-input").empty();
+      var currentText = $(adlibArg).val();
+      $(adlibArg).empty();
       var lexical = $(this).attr("lexicalCategory");
       var queryURL = "https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech="+lexical+"&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
       $.ajax({
@@ -122,8 +139,18 @@
       })
       .done(function(data) {
 
-        $(".adLib-input").val(currentText + data.word+" ")
         var randomWord = data.word;
+        randomWordLength = randomWord.length;
+        var length = $(adlibArg).val().length;
+        var charRemain = maxCharCount - length;
+
+        if (charRemain > randomWordLength) {
+          $(adlibArg).val(currentText + data.word+" ");
+          $(char).text("Characters Remaining: " + charRemain);
+        } else {
+          $(char).text("Characters Remaining: " + charRemain);
+        }
+        
         $.ajax({
           type: "GET",
           url: "https://api.wordnik.com/v4/word.json/"+randomWord+"/definitions?limit=200&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5",
@@ -135,15 +162,32 @@
         });
       });
     });
+}
+
+function charCount(adlibArg, char){
+  $(adlibArg).keyup(function() {
+    var length = $(this).val().length;
+    var charRemain = maxCharCount - length;
+    if (charRemain >= 0) {
+        $(char).text("Characters Remaining: " + charRemain);
+    }
+  })
+}
 
 // New Story On Click Function
     $(".newStoryButt").click(function(event){
+<<<<<<< HEAD
       $(".newStory").show();
       $(".landingPage").hide();
       $(".hoverStyle").hide();
       $(".mainContain").hide();
       $(".joinStory").hide();
       $(".readStory").hide();
+=======
+    lexical(".adLib-input2", "#charCount");
+    charCount(".adLib-input2", "#charCount");
+
+>>>>>>> 6970df784a66666acee99e9033e0396708d28a0b
 
 // Variables
       var storiesRef = dataRef.ref().child("storyCounter");
@@ -151,8 +195,8 @@
       var title = $(".titleUserInput");
       var author = $(".authorUserInput");
       var age = $(".ageUserInput");
-      adLib = $(".adLib-input").val().trim();
-      console.log($(".adLib-input").val().trim())
+      adLib = $(".adLib-input2").val().trim();
+      console.log($(".adLib-input2").val().trim())
       adLibArray.push(adLib);
 
 // Creates New Story Object in Firebase with a story ID.
@@ -190,6 +234,9 @@
           var storySentences = currenStory.adLibArray;
           storySentences.push(adLib);
 //This is where JOrdan Needs to find out how to look up object by Child(ID) in Firebase
+
+// Maybe limit queries like this will work?
+// curl 'https://console.firebase.google.com/project/friendscripts/database/data/stories.json?orderBy="id"&equalTo=NewStoryID&print=pretty'
           storiesRef.child(storyCounter).set({
             title: title,
             author: author,

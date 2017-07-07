@@ -27,7 +27,7 @@
         <ul class="col-md-4 landingPageBtn newStoryButt">New Story</ul>
         <ul class="col-md-4 landingPageBtn joinStoryButt">Join Story</button>
         </ul>
-        <ul class="col-md-4 landingPageBtn readStoryButt">Read Story</button>
+        <ul class="col-md-4 landingPageBtn readStoryMainButt">Read Story</button>
         </ul>
       </nav>
     </div>
@@ -119,11 +119,11 @@
     <div class="col-md-4">
     </div>
     <div class="col-md-8 col-md-offset-2">
-      <button lexicalCategory="noun" type="reset" style="background: #3c7079" class="btn btn-default lexical buttonBg col-md-2">Noun</button>
-      <button lexicalCategory="verb" type="reset" style="background: #3c7079" class="btn btn-default lexical buttonBg col-md-2">Verb</button>
-      <button lexicalCategory="adjective" type="reset" style="background: #3c7079" class="btn btn-default lexical buttonBg col-md-2">Adjective</button>
-      <button lexicalCategory="adverb" type="reset" style="background: #3c7079" class="btn btn-default lexical buttonBg col-md-2">Adverb</button>
-      <button lexicalCategory="idiom" type="reset" style="background: #3c7079" class="btn btn-default lexical buttonBg col-md-2">Idiom</button>
+      <button lexicalCategory="noun" type="reset" style="background: #3c7079" class="btn btn-default lexicalEdit buttonBg col-md-2">Noun</button>
+      <button lexicalCategory="verb" type="reset" style="background: #3c7079" class="btn btn-default lexicalEdit buttonBg col-md-2">Verb</button>
+      <button lexicalCategory="adjective" type="reset" style="background: #3c7079" class="btn btn-default lexicalEdit buttonBg col-md-2">Adjective</button>
+      <button lexicalCategory="adverb" type="reset" style="background: #3c7079" class="btn btn-default lexicalEdit buttonBg col-md-2">Adverb</button>
+      <button lexicalCategory="idiom" type="reset" style="background: #3c7079" class="btn btn-default lexicalEdit buttonBg col-md-2">Idiom</button>
     </div>
   </div>
 </nav>
@@ -132,7 +132,7 @@
     <div class="row panelTitle">
           <div class="form-group">
             <label for="exampleTextarea">Enter your Sentence</label>
-            <textarea maxlength="150" class="form-control adLib-input2" style="min-width: 100%"></textarea>
+            <textarea id="editStoryCommit" maxlength="150" class="form-control" style="min-width: 100%"></textarea>
             <div class="charCount">Characters Remaining: 150</div>
           </div>
       <div>
@@ -184,15 +184,15 @@
           </div>
           <br>
           <div class="form-group">
-            <label for="exampleTextarea">Enter your Sentence</label>
-            <textarea maxlength="150" class="form-control adLib-input2" style="min-width: 100%"></textarea>
+            <label for="exampleTextarea">Enter your Sentences</label>
+            <textarea id=newStoryText maxlength="150" class="form-control" style="min-width: 100%"></textarea>
             <div class="charCount">Characters Remaining: 150</div>
           </div>
-          <button lexicalCategory="noun" type="reset" style="background: #005077" class="btn btn-default lexical buttonBg col-md-2">Noun</button>
-          <button lexicalCategory="verb" type="reset" style="background: #005077" class="btn btn-default lexical buttonBg col-md-2">Verb</button>
-          <button lexicalCategory="adjective" type="reset" style="background: #005077" class="btn btn-default lexical buttonBg col-md-2">Adjective</button>
-          <button lexicalCategory="adverb" type="reset" style="background: #005077" class="btn btn-default lexical buttonBg col-md-2">Adverb</button>
-          <button lexicalCategory="idiom" type="reset" style="background: #005077" class="btn btn-default lexical buttonBg col-md-2">Idiom</button>
+          <button lexicalCategory="noun" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Noun</button>
+          <button lexicalCategory="verb" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Verb</button>
+          <button lexicalCategory="adjective" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Adjective</button>
+          <button lexicalCategory="adverb" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Adverb</button>
+          <button lexicalCategory="idiom" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Idiom</button>
         </div>
       </div>
     </nav>
@@ -204,7 +204,7 @@
           <br>
           <div>
             <div class="subButtonPosition">
-            <button type="submit" style="background: #3c7079" class="btn btn-primary commit-Lib commitNewStory col-md-4 col-md-offset-4 ">Submit</button>
+            <button type="submit" style="background: #3c7079" class="btn btn-primary commitNewStory col-md-4 col-md-offset-4 ">Submit</button>
             </div>
           </div>
           <br>
@@ -256,12 +256,35 @@
             <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg readStoryButt">Read Story</button>
              <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg speakStoryButt">Play Audio</button>
           </div>
-          <div>Read the Story:
-          </div>
         </div>
       </nav>
     </div>
   </div>
+
+<!-- Read Story Button Page -->
+  <div class="container readStoryBttnPage">
+    <div class="container col-md-3 leftNav">
+      <img alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img alt="Brand" width="200px" src="assets/images/Asset.png">
+    </div>
+    <div class="container col-md-8 bgPic rightView">
+      <h1>Read Story Button Page</h1>
+      <div id="readStoryDiv">
+      </div>
+      <!-- <nav class="row"> -->
+        <div class="buttonNav container">
+          
+        </div>
+      <!-- </nav> -->
+    </div>
+  </div>
+
+
+
 </body>
 <script type="text/javascript" src="assets/javascript/app.js"></script>
 </html>

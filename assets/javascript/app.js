@@ -101,7 +101,7 @@
       
       //Get the User Input and Trim the spaces.
       adLib = $("#editStoryCommit").val().trim();
-      console.log($("#editStoryCommit").val().trim())
+      // console.log($("#editStoryCommit").val().trim())
 
       //Highlight Text Field
       if(adLib.length === 0){
@@ -115,7 +115,7 @@
       var storiesRef = dataRef.ref().child("stories");
       storiesRef.once("value", function(snapshot) {
         var stories = snapshot.val();
-        console.log(stories);
+        // console.log(stories);
         var currenStory = stories[storyIndex];
         
           var storySentences = currenStory["adLibArray"];
@@ -132,7 +132,7 @@
            var lastSentence = storySentences.length-1;
            $(".prompt-Lib").append(storySentences[lastSentence]);
          }else {
-          console.log("length of array", adLibArray.length);
+          // console.log("length of array", adLibArray.length);
         };
 
         
@@ -152,7 +152,7 @@
     $(".lexicalEdit").click(function(){
       event.preventDefault();
       var currentText = $("#editStoryCommit").val();
-      console.log(currentText);
+      // console.log(currentText);
       // $("#editStoryCommit").empty();
       var lexical = $(this).attr("lexicalCategory");
       var queryURL = "https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech="+lexical+"&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
@@ -195,7 +195,7 @@
 $(".lexicalNew").click(function(){
       event.preventDefault();
       var currentText = $("#newStoryText").val();
-      console.log(currentText);
+      // console.log(currentText);
       // $("#newStoryText").empty();
       var lexical = $(this).attr("lexicalCategory");
       var queryURL = "https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech="+lexical+"&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
@@ -276,9 +276,6 @@ adLib = $("#newStoryText").val().trim();
     storiesRef.once("value", function(snapshot) {
       var storyCounter = snapshot.val();
       storyCounter++;
-        // var newStoryID = dataRef.ref().child('stories').orderByChild('id').equalTo(storyCounter);
-        console.log(storyCounter);
-        // console.log("newStoryID: "+newStoryID);
         storiesRef.set(storyCounter);
         // console.log(dataRef.ref().child("stories"));
 
@@ -328,19 +325,18 @@ adLib = $("#newStoryText").val().trim();
                 });
 
               //Go to the edit page of the Story Just submitted
-                  var loopStoryID = dataRef.ref().child("stories").orderByChild('id').equalTo(storyCounter);
-                  loopStoryID.once("value", function(storyWithId) {
+          var loopStoryID = dataRef.ref().child("stories").orderByChild('id').equalTo(storyCounter);
+          loopStoryID.once("value", function(storyWithId) {
           var storiesWithLoopStoryId = storyWithId.val();
           var storyKey = Object.keys(storiesWithLoopStoryId)[0];
-          console.log(storyKey)
+          // console.log(storyKey)
           var story = storiesWithLoopStoryId[storyKey];
-          console.log(story.title);
+          // console.log(story.title);
               
                   storyIndex = firebaseID;
                   storyPath = story;
                   // console.log(storyId);
-                  // console.log(storyId);
-                  console.log(story)
+                  // console.log(story)
                   // console.log(storyPath);
                   $(".newStory").hide();
                   $(".prompt-Lib").empty();
@@ -383,9 +379,9 @@ $(".joinStoryButt").click(function(){
         loopStoryID.once("value", function(storyWithId) {
           var storiesWithLoopStoryId = storyWithId.val();
           var storyKey = Object.keys(storiesWithLoopStoryId)[0];
-          console.log(storyKey)
+          // console.log(storyKey)
           var story = storiesWithLoopStoryId[storyKey];
-          console.log(story.title);
+          // console.log(story.title);
           var newButt = $("<button>", {
                 text: story.title +": "+story.storyPrompt,
                 click: function() {
@@ -412,7 +408,6 @@ $(".joinStoryButt").click(function(){
               });
           newButt.attr("data-story-id", storyKey);
           $(".editStoryDiv").append(newButt);
-          // $(".adLib-input2").empty();
         });
       }
     });
@@ -421,13 +416,14 @@ $(".joinStoryButt").click(function(){
 
 
 $(".readStoryMainButt").click(function(){
-  $(".editStoryDiv").empty();
+  $("#readStoryDiv").empty();
   $("#editStoryCommit").val("");
   var storyCounterRef = dataRef.ref().child("storyCounter");
   storyCounterRef.once("value", function(counterSnapshot) {
     var storyCounter = counterSnapshot.val();
     console.log(storyCounter);
-    var numberOfStories = storyCounter - 10;
+    var numberOfStories = 0
+    // storyCounter - 10;
     console.log(numberOfStories)
     var storiesRef = dataRef.ref().child("stories");
     storiesRef.once("value", function(storiesSnapshot) {
@@ -437,36 +433,28 @@ $(".readStoryMainButt").click(function(){
         loopStoryID.once("value", function(storyWithId) {
           var storiesWithLoopStoryId = storyWithId.val();
           var storyKey = Object.keys(storiesWithLoopStoryId)[0];
-          console.log(storyKey)
           var story = storiesWithLoopStoryId[storyKey];
-          console.log(story.title);
           var newButt = $("<button>", {
                 text: story.title +": "+story.storyPrompt,
                 click: function() {
                   var storyId = $(this).attr("data-story-id");
                   storyIndex = storyId;
                   storyPath = story;
-                  // console.log(storyId);
-                  // console.log(storyId);
-                  // console.log(story)
-                  // console.log(storyPath);
                   $(".prompt-Lib").empty();
                   $(".landingPage").hide();
                   $(".joinStory").hide();
                   $("#editStoryCommit").val("");
                   $(".editStory").hide();
+                  $(".readStoryBttnPage").hide();
                   $(".readStory").show();
-                  // console.log(story.adLibArray[1])
-                  if(story.adLibArray[1]){
-                    var lastSentence = story.adLibArray.length - 1;
-                    $(".prompt-Lib").append(story.adLibArray[lastSentence]);
-                  }
-                  else{$(".prompt-Lib").append(story.storyPrompt)};
+                  $(".prompt-Lib").empty();
+                  $(".prompt-Lib").append(storyPath.storyPrompt+" "+storyPath.adLibArray.join(''))
+                  $(".title").empty();
+                  $(".title").append(storyPath.title);
                 }
               });
           newButt.attr("data-story-id", storyKey);
-          $(".editStoryDiv").append(newButt);
-          // $(".adLib-input2").empty();
+          $("#readStoryDiv").append(newButt);
         });
       }
     });

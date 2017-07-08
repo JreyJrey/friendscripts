@@ -29,23 +29,22 @@ header {
 
 body {
     min-height: 100vh;
-    background-color: #dfe3ee;
+    background-color: #f7f7f7;
     border-style: #8ab8bc;
 
 }
 
 .btn {
-    background-color: #8ab8bc; /* Green */
+    background-color: #8ab8bc; 
     border: none;
     color: white;
-    padding: 4px 6px;
+  /*  padding: 4px 6px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
     border-left: solid black 2px;
-    margin-left: 8px;
-
+    margin-left: 8px;*/
 
 }
 
@@ -53,9 +52,13 @@ body {
     min-height: 10vh;
     max-height: 92vh;
     position: relative;
-    background-color: #d7dfe0;
+    background-color: #ffffff;
     overflow: hidden;
     overflow: scroll;
+        border-left:1px solid #eeeeee;
+    border-right:1px solid #eeeeee;
+    margin:0 auto;
+    box-shadow: 5px 5px 5px #888888;
 }
 .leftNav img {
     margin-top: 5%;
@@ -64,19 +67,27 @@ body {
 }
 
 .rightView {
-    background-color: #8b9dc3;
+    background-color: #ffffff;
     margin-left: 50px;
       border: none;
-  color: white;
+  color:  #005077;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 30px;
+      min-height: 10vh;
+    max-height: 92vh;
+      overflow: hidden;
+  /*overflow: hidden;*/
+      border-left:1px solid #eeeeee;
+    border-right:1px solid #eeeeee;
+    margin:0 auto;
+    box-shadow: 5px 5px 5px #888888;
 
 
 }
 .newRightView {
-    background-color: #8b9dc3;
+    background-color: #ffffff;
       border: none;
   color: white;
   text-align: center;
@@ -95,7 +106,7 @@ body {
     border-radius: 20px;
     margin: 20px;
      opacity: 90%;
-     background-color: #d7dfe0;
+     background-color: #f7f7f7;
 }
 
 .topPanel p {
@@ -105,7 +116,7 @@ body {
 }
 .storyPrompt{
   font-size: 36px;
-  color: #3c7079;
+  color: #005077;
 }
 
 .rightPanel{
@@ -114,7 +125,7 @@ body {
 
 }
 .buttonNav {
-    background-color: #8b9dc3;
+    background-color: #ffffff;
     max-width: 100%;
     height: 100%;
 }
@@ -122,27 +133,28 @@ body {
 .lBottomPanel{
     position: relative;
     font-size: 16px;
-    background-color: #8b9dc3;
+    background-color: #ffffff;
     height: 20vh;
     text-align: center;
     border-right: solid #dce5cd 1px;
     margin: 30px 0 15px 0;
     opacity: 1;
-   border-right: #3c7079 solid 2px;
+   border-right: #005077 solid 2px;
 }
 
 .buttonBg {
-    background-color: #005077;
+    background-color: #ffffff;
     font-size: 18px;
   padding: 5px;
+  margin: 10px
 
 }
 
 .rBottomPanel {
     font-size: 18px;
-    background-color: #8b9dc3;
+    background-color: #ffffff;
     text-align: center;
-    border-bottom: #3c7079 solid 6px;
+    border-bottom: #005077 solid 6px;
 
 }
 .panelTitle {
@@ -169,11 +181,11 @@ body {
 /*     padding-left: 57px;*/
      font-size: 16px;
      color: white;
-     background-color: #3c7079;
+     background-color: #005077;
      text-align: left;
 }
 .DefinitionStyle {
-  color: #3c7079;
+  color: #005077;
 }
 
 .landingPageBtn {
@@ -201,11 +213,16 @@ body {
     margin: 0px 0px 17px 313px;
 }
 .newStoryStyle {
+  background-color: #ffffff;
   text-align: left;
-  text-shadow: 2px 2px #3c7079;
+     border-left:1px solid #eeeeee;
+    border-right:1px solid #eeeeee;
+    margin:0 auto;
+    box-shadow: 5px 5px 5px #888888;
+/*  border-bottom: #8b9dc3 solid 5px;*/
 }
 .adLib-input {
-  box-shadow: 4px 2px #3c7079;
+  box-shadow: 4px 2px #005077;
 }
 
 .marketStyle {
@@ -258,3 +275,40 @@ body {
     transform: scale(1);
   }
 }
+
+.newStoryDiv {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f7f7f7;
+  font-size: 20px;
+  color: grey;
+  margin: 29px 4px 7px 4px;
+  width: 200px;
+  height: 200px;
+  text-align: left;
+
+    box-shadow: 5px 5px 5px #888888;
+  overflow: hidden;
+}
+
+.headerStyle {
+  background-color: #f7f7f7;
+}
+.form-group {
+  font-size: 28px;
+}
+/*.rightView h1 {
+  background-color:   #8b9dc3;
+}
+*/
+#readStoryDiv {
+  height: 90vh;
+}
+.speakStoryButt {
+  margin-bottom: 25px;
+}
+
+
+
+
+

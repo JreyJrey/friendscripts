@@ -6,12 +6,12 @@
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="assets/javascript/readremaining.jquery.js"></script>
+<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="readremaining/src/readremaining.jquery.js"></script> -->
   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script> 
-  <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+  <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/rr_light.css"/>
+  <link rel="stylesheet" href="readremaining/css/rr_dark.css"/>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
       <img src="assets/images/header_7.svg" class="img-responsive col-md-4 col-md-offset-4 imgStyle" alt="">
     </div>
   </div>
-  <div class="container">
+  <div class="container headerStyle">
     <div class="row">
       <nav class="logo nav col-md-12">
         <ul class="col-md-4 landingPageBtn newStoryButt">New Story</ul>
@@ -50,205 +50,226 @@
       <div class="col-md-4 marketStyle">
         <p>Have a laugh by reading a Friendscript story, that has been thoughtfully co-authored one line at a time.</p>
       </div>
-    </div>
   </div>
+</div>
+
 
   
   <!-- Edit Story Page -->
-    <div class="editStory">
-<div class="container col-md-3 leftNav">
-  <img alt="Brand" width="200px" src="assets/images/Asset.png">
-  <img alt="Brand" width="200px" src="assets/images/Asset.png">
-  <img alt="Brand" width="200px" src="assets/images/Asset.png">
-  <img alt="Brand" width="200px" src="assets/images/Asset.png">
-  <img alt="Brand" width="200px" src="assets/images/Asset.png">
-  <img alt="Brand" width="200px" src="assets/images/Asset.png">
-</div>
-<div class="container col-md-8 bgPic rightView">
- <div class="row topPanel">
- <div class="storyPrompt">Story Prompt</div>
-  <p class="prompt-Lib">
-  </p>
-</div>
-<nav class="row">
-  <div class="buttonNav container">
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-8 col-md-offset-2">
-      <button lexicalCategory="noun" type="reset" style="background: #3c7079" class="btn btn-default lexicalEdit buttonBg col-md-2">Noun</button>
-      <button lexicalCategory="verb" type="reset" style="background: #3c7079" class="btn btn-default lexicalEdit buttonBg col-md-2">Verb</button>
-      <button lexicalCategory="adjective" type="reset" style="background: #3c7079" class="btn btn-default lexicalEdit buttonBg col-md-2">Adjective</button>
-      <button lexicalCategory="adverb" type="reset" style="background: #3c7079" class="btn btn-default lexicalEdit buttonBg col-md-2">Adverb</button>
-      <button lexicalCategory="idiom" type="reset" style="background: #3c7079" class="btn btn-default lexicalEdit buttonBg col-md-2">Idiom</button>
-      <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg speakStoryButt">Play Audio</button>
-      <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg readStoryButt">Read this Full Story</button>
-    </div>
-  </div>
-</nav>
-<div class="row">
-  <div class="col-md-12 rBottomPanel">
-    <div class="row panelTitle">
-          <div class="form-group">
-            <label for="exampleTextarea">Enter your Sentence</label>
-            <textarea id="editStoryCommit" maxlength="150" class="form-control" style="min-width: 100%"></textarea>
-            <div class="charCount">Characters Remaining: 150</div>
-          </div>
-      <div>
-        <div class="subButtonPosition">
-          <button type="submit" class="btn btn-primary commit-Lib col-md-3 col-md-offset-3">Submit</button>
-        </div>
-      </div>
-      <br>
-      <br>
-      <br>
-      <div class="row">
-      <div class="DefinitionStyle col-md-4">
-        <h2>Definitions :</h2>
-      </div>
-      <div class="thumbStyle col-md-8">   
-        </div>
-      </div> 
-    </div>
-  </div>
-</div>
-</div>
-</div>
 
-<!-- New Story Page -->
-<div class="newStory">
-  <div class="container col-md-3 leftNav">
-    <img alt="Brand" width="200px" src="assets/images/Asset.png">
-    <img alt="Brand" width="200px" src="assets/images/Asset.png">
-    <img alt="Brand" width="200px" src="assets/images/Asset.png">
-    <img alt="Brand" width="200px" src="assets/images/Asset.png">
-    <img alt="Brand" width="200px" src="assets/images/Asset.png">
-    <img alt="Brand" width="200px" src="assets/images/Asset.png">
-  </div>
-  <div class="container col-md-6 bgPic rightView">
-    <nav class="row">
+  <div class="editStory">
+    <div class="container col-md-3 leftNav">
+      <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+      <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+    </div>
+    <div class="container col-md-8 bgPic rightView">
+     <div class="row topPanel">
+       <div class="storyPrompt">Story Prompt</div>
+       <p class="prompt-Lib">
+       </p>
+     </div>
+     <nav class="row">
       <div class="buttonNav container">
         <div class="col-md-4">
         </div>
-        <div class="col-md-10 col-md-offset-1 newStoryStyle">
-          <br>
-          <div class="form-group">
-            <label for="exampleTextarea">Story Title</label>
-            <textarea class="form-control userTitle" style="box-shadow: 2px 2px #3c7079 min-width: 100%"></textarea>
-          </div>
-          <br>
-          <div class="form-group">
-            <label for="exampleTextarea">Story Author</label>
-            <textarea class="form-control userAuthor" style="min-width: 100%"></textarea>
-          </div>
-          <br>
-          <div class="form-group">
-            <label for="exampleTextarea">Enter your Sentences</label>
-            <textarea id=newStoryText maxlength="150" class="form-control" style="min-width: 100%"></textarea>
-            <div class="charCount">Characters Remaining: 150</div>
-          </div>
-          <button lexicalCategory="noun" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Noun</button>
-          <button lexicalCategory="verb" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Verb</button>
-          <button lexicalCategory="adjective" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Adjective</button>
-          <button lexicalCategory="adverb" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Adverb</button>
-          <button lexicalCategory="idiom" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Idiom</button>
+        <div class="col-md-8 col-md-offset-2">
+          <button lexicalCategory="noun" type="reset" style="background: #005077" class="btn btn-default lexicalEdit buttonBg col-md-2">Noun</button>
+          <button lexicalCategory="verb" type="reset" style="background: #005077" class="btn btn-default lexicalEdit buttonBg col-md-2">Verb</button>
+          <button lexicalCategory="adjective" type="reset" style="background: #005077" class="btn btn-default lexicalEdit buttonBg col-md-2">Adjective</button>
+          <button lexicalCategory="adverb" type="reset" style="background: #005077" class="btn btn-default lexicalEdit buttonBg col-md-2">Adverb</button>
+          <button lexicalCategory="idiom" type="reset" style="background: #005077" class="btn btn-default lexicalEdit buttonBg col-md-2">Idiom</button>
+          <button type="button" style="background: #005077" class="btn btn-primary buttonBg speakStoryButt">Play Audio</button>
+          <button type="button" style="background: #005077" class="btn btn-primary buttonBg pauseStoryButt">Pause Audio</button>
+          <button type="button" style="background: #005077" class="btn btn-primary buttonBg resumeStoryButt">Resume Audio</button>
+          <button type="button" style="background: #005077" class="btn btn-primary buttonBg readStoryButt">Read this Full Story</button>
+          <!--  -->
         </div>
-      </div>
-    </nav>
-    <div class="row">
-      <div class="col-md-12 rBottomPanel">
-        <div class="row panelTitle">
-          <br>
-          <br>
-          <br>
-          <div>
-            <div class="subButtonPosition">
-            <button type="submit" style="background: #3c7079" class="btn btn-primary commitNewStory col-md-4 col-md-offset-4 ">Submit</button>
+        <!-- <div class="container col-md-9 bgPic rightView">
+         <div class="row topPanel">
+           <div class="storyPrompt">Story Prompt</div>
+           <p class="prompt-Lib">
+           </p>
+         </div>
+         <nav class="row">
+          <div class="buttonNav container">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+              <button lexicalCategory="noun" type="reset" style="background: #005077" class="btn btn-default lexicalEdit buttonBg col-md-2">Noun</button>
+              <button lexicalCategory="verb" type="reset" style="background: #005077" class="btn btn-default lexicalEdit buttonBg col-md-2">Verb</button>
+              <button lexicalCategory="adjective" type="reset" style="background: #005077" class="btn btn-default lexicalEdit buttonBg col-md-2">Adjective</button>
+              <button lexicalCategory="adverb" type="reset" style="background: #005077" class="btn btn-default lexicalEdit buttonBg col-md-2">Adverb</button>
+              <button lexicalCategory="idiom" type="reset" style="background: #005077" class="btn btn-default lexicalEdit buttonBg col-md-2">Idiom</button>
             </div>
           </div>
-          <br>
-          <br>
-          <br>
-          <div class="row">
-      <div class="DefinitionStyle col-md-4">
-        <h2>Definitions :</h2>
-      </div>
-      <div class="thumbStyle col-md-8">   
-        </div>
-      </div> 
-        </div>
-    </div>
-  </div>
-  </div>
-  </div>
-
-
-  <!-- Join Story Page -->
-  <div class="container joinStory">
-    <div class="container col-md-3 leftNav">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-    </div>
-    <div class="container col-md-6 bgPic rightView">
-    <h1>Pick a Story to Join</h1>
-      <div class="editStoryDiv"></div>
-    </div>
-  </div>
-
-  <!-- Read Story -->
-  <div class="container readStory">
-    <div class="container col-md-3 leftNav">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-    </div>
-    <div class="container col-md-8 bgPic rightView">
-      <h1 class = "title">Read Story Page</h1>
-      <div class="row topPanel">
-        <p class="prompt-Lib">
-        </p>
-      </div>
-      <nav class="row">
-        <div class="buttonNav container">
-          <div class="col-md-4">
-             <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg speakStoryButt">Play Audio</button>
+        </nav> -->
+        <div class="row">
+          <div class="col-md-12 rBottomPanel">
+            <div class="row panelTitle">
+              <div class="form-group">
+                <label for="exampleTextarea">Enter your Sentence</label>
+                <textarea id="editStoryCommit" maxlength="150" class="form-control" style="min-width: 100%"></textarea>
+                <div class="charCount">Characters Remaining: 150</div>
+              </div>
+              <div>
+                <div class="subButtonPosition">
+                  <button type="submit" style="background: #005077" class="btn btn-primary commit-Lib col-md-4 col-md-offset-4">Submit</button>
+                </div>
+              </div>
+              <br>
+              <br>
+              <br>
+              <div class="row">
+                <div class="DefinitionStyle col-md-4">
+                  <h2>Definitions :</h2>
+                </div>
+                <div class="thumbStyle col-md-8">   
+                </div>
+              </div> 
+            </div>
           </div>
-          <div id="readButtDiv"></div>
         </div>
-      </nav>
-    </div>
+     <!--  </div>
+    </div> -->
+    </nav>
   </div>
+  </div>
+
+
+    <!-- New Story Page -->
+    <div class="newStory">
+      <div class="container col-md-3 leftNav">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+      </div>
+      <div class="container col-md-9 bgPic rightView">
+        <nav class="row">
+          <div class="buttonNav container newStoryStyle">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-10 col-md-offset-1">
+              <br>
+              <div class="form-group">
+                <label for="exampleTextarea">Story Title</label>
+                <textarea class="form-control userTitle" style="box-shadow: 2px 2px #3c7079 min-width: 100%"></textarea>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="exampleTextarea">Story Author</label>
+                <textarea class="form-control userAuthor" style="min-width: 100%"></textarea>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="exampleTextarea">Enter your Sentences</label>
+                <textarea id=newStoryText maxlength="150" class="form-control" style="min-width: 100%"></textarea>
+                <div class="charCount">Characters Remaining: 150</div>
+              </div>
+              <button lexicalCategory="noun" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Noun</button>
+              <button lexicalCategory="verb" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Verb</button>
+              <button lexicalCategory="adjective" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Adjective</button>
+              <button lexicalCategory="adverb" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Adverb</button>
+              <button lexicalCategory="idiom" type="reset" style="background: #005077" class="btn btn-default lexicalNew buttonBg col-md-2">Idiom</button>
+              <br>
+              <br>
+              <div class="subButtonPosition">
+                <button type="submit" style="background: #005077" class="btn btn-primary commitNewStory col-md-4 col-md-offset-4 ">Submit</button>
+              </div>
+              <br>
+              <div class="DefinitionStyle col-md-4">
+                <h2>Definitions</h2>
+              </div>
+              <div class="thumbStyle col-md-12">   
+              </div>
+            </div> 
+          </div>
+        </nav>
+      </div>
+      </div>
+    
+    
+
+
+
+
+    <!-- Join Story Page -->
+    <div class="joinStory">
+      <div class="container col-md-3 leftNav">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+      </div>
+      <div class="container col-md-9 bgPic rightView">
+        <h1>Pick a Story to Join</h1>
+        <div class="editStoryDiv">
+          <div class="title"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Read Story -->
+    <div class="readStory">
+      <div class="container col-md-3 leftNav">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+        <!--  -->
+      </div>
+      <div class="container col-md-8 bgPic rightView">
+        <h1 class = "title">Read Story Page</h1>
+        <div class="row topPanel">
+          <p class="prompt-Lib">
+          </p>
+        </div>
+        <nav class="row">
+          <div class="buttonNav container">
+            <div class="col-md-4">
+             <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg speakStoryButt">Play Audio</button>
+             <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg pauseStoryButt">Pause Audio</button>
+             <button type="button" style="background: #3c7079" class="btn btn-primary buttonBg resumeStoryButt">Resume Audio</button>      
+           </div>
+           <div id="readButtDiv"></div>
+         </div>
+       </nav>
+     </div>
+   </div>
+</div>
 
 <!-- Read Story Button Page -->
-  <div class="container readStoryBttnPage">
-    <div class="container col-md-3 leftNav">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-      <img alt="Brand" width="200px" src="assets/images/Asset.png">
-    </div>
-    <div class="container col-md-8 bgPic rightView">
-      <h1>Pick a story to Read</h1>
-      <div id="readStoryDiv">
-      </div>
-      <!-- <nav class="row"> -->
-        <div class="buttonNav container">
-          
-        </div>
-      <!-- </nav> -->
-    </div>
+<div class="readStoryBttnPage">
+  <div class="container col-md-3 leftNav">
+    <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+    <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+    <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+    <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
+    <img class="col-md-10 col-md-offset-1" alt="Brand" width="200px" src="assets/images/Asset.png">
   </div>
+  <div class="container col-md-8 bgPic rightView">
+    <h1>Pick a story to Read</h1>
+    <div id="readStoryDiv">
+    </div>
+    <!-- <nav class="row"> -->
+    <div class="buttonNav container">
 
+    </div>
+    <!-- </nav> -->
+  </div>
+</div>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="readremaining/src/readremaining.jquery.js"></script>
+<script>
+  $('body').readRemaining();
+</script>
 </body>
 <script type="text/javascript" src="assets/javascript/app.js"></script>
 </html>

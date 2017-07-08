@@ -26,8 +26,6 @@
     $(".readStoryBttnPage").hide();
   })
 
-    $(".prompt-Lib").readRemaining();
-
   // Join Story Button Function
   $(".joinStoryButt").click(function(event){
     $(".joinStory").show();
@@ -110,10 +108,15 @@
   $(".joinStory").hide();
 });
 
-    $(".speakStoryButt").click(function(event){
-      responsiveVoice.speak(storyPath.storyPrompt+" "+storyPath.adLibArray.join(''), "UK English Female", {pitch: 1, rate: 0});
-    })
-
+$(".speakStoryButt").click(function(event){
+    responsiveVoice.speak(storyPath.storyPrompt+" "+storyPath.adLibArray.join(''), "UK English Female", {pitch: 1, rate: 0.8});
+});
+$(".pauseStoryButt").click(function(event){
+    responsiveVoice.pause();
+});
+$(".resumeStoryButt").click(function(event){
+    responsiveVoice.resume();
+});
 
   // Initialize Firebase
   var config = {
@@ -436,8 +439,8 @@ $(".joinStoryButt").click(function(){
           // console.log(storyKey)
           var story = storiesWithLoopStoryId[storyKey];
           // console.log(story.title);
-          var newButt = $("<button>", {
-                text: story.title +": "+story.storyPrompt,
+          var newButt = $("<div>", {
+                text: story.title +": "+ "" + story.storyPrompt,
                 click: function() {
                   var storyId = $(this).attr("data-story-id");
                   storyIndex = storyId;
@@ -462,6 +465,7 @@ $(".joinStoryButt").click(function(){
                 }
               });
           newButt.attr("data-story-id", storyKey);
+          newButt.addClass("newStoryDiv col-md-4");
           $(".editStoryDiv").append(newButt);
         });
       }
@@ -489,7 +493,7 @@ $(".readStoryMainButt").click(function(){
           var storiesWithLoopStoryId = storyWithId.val();
           var storyKey = Object.keys(storiesWithLoopStoryId)[0];
           var story = storiesWithLoopStoryId[storyKey];
-          var newButt = $("<button>", {
+          var newButt = $("<div>", {
                 text: story.title +": "+story.storyPrompt,
                 click: function() {
                   var storyId = $(this).attr("data-story-id");
@@ -508,6 +512,7 @@ $(".readStoryMainButt").click(function(){
                   $(".title").append(storyPath.title);
                 }
               });
+          newButt.addClass("newStoryDiv col-md-4");
           newButt.attr("data-story-id", storyKey);
           $("#readStoryDiv").append(newButt);
         });

@@ -328,24 +328,39 @@ adLib = $("#newStoryText").val().trim();
       // console.log($(".adLib-input2").val().trim())
       adLibArray.push(adLib);
 
-// Creates New Story Object in Firebase with a story ID.
-    storiesRef.once("value", function(snapshot) {
-      var storyCounter = snapshot.val();
-      storyCounter++;
-        storiesRef.set(storyCounter);
-        // console.log(dataRef.ref().child("stories"));
+// // Creates New Story Object in Firebase with a story ID.
+//     storiesRef.once("value", function(snapshot) {
+//       var storyCounter = snapshot.val();
+//       storyCounter++;
+//         storiesRef.set(storyCounter);
+//         // console.log(dataRef.ref().child("stories"));
 
-        dataRef.ref().child("stories").push({
-          id: storyCounter,
-          title: "",
-          author: "",
-          storyPrompt: "",
-          adLibArray: [""],
-          dateAdded: firebase.database.ServerValue.TIMESTAMP
-        });
+//         dataRef.ref().child("stories").push({
+//           id: storyCounter,
+//           title: "",
+//           author: "",
+//           storyPrompt: "",
+//           adLibArray: [""],
+//           dateAdded: firebase.database.ServerValue.TIMESTAMP
+//         });
         
         // Click Event for Submit Story
         $(".commitNewStory").click(function(event){
+          // Creates New Story Object in Firebase with a story ID.
+        storiesRef.once("value", function(snapshot) {
+          var storyCounter = snapshot.val();
+          storyCounter++;
+            storiesRef.set(storyCounter);
+            // console.log(dataRef.ref().child("stories"));
+
+            dataRef.ref().child("stories").push({
+              id: storyCounter,
+              title: "",
+              author: "",
+              storyPrompt: "",
+              adLibArray: [""],
+              dateAdded: firebase.database.ServerValue.TIMESTAMP
+            });
           var userTitle = $(".userTitle").val();
           var userAuthor = $(".userAuthor").val();
           var adLib2 = $("#newStoryText").val();

@@ -49,6 +49,7 @@
   $(".hoverStyle").hide()
   $(".readStoryBttnPage").hide();
   $(".prompt-Lib").empty();
+  console.log($(".prompt-Lib").append(storyPath.storyPrompt+" "+storyPath.adLibArray.join(' ')));
   $(".prompt-Lib").append(storyPath.storyPrompt+" "+storyPath.adLibArray.join(' '))
 //   console.log(id);
 //   var storyCounterRef = dataRef.ref().child("storyCounter");
@@ -421,7 +422,8 @@ $(".joinStoryButt").click(function(){
   storyCounterRef.once("value", function(counterSnapshot) {
     var storyCounter = counterSnapshot.val();
     console.log(storyCounter);
-    var numberOfStories = storyCounter - 10;
+    var numberOfStories = 1;
+    // storyCounter - 10;
     console.log(numberOfStories)
     var storiesRef = dataRef.ref().child("stories");
     storiesRef.once("value", function(storiesSnapshot) {

@@ -77,7 +77,7 @@ body {
   font-size: 30px;
       min-height: 10vh;
     max-height: 92vh;
-      overflow: hidden;
+      overflow: scroll;
   /*overflow: hidden;*/
       border-left:1px solid #eeeeee;
     border-right:1px solid #eeeeee;

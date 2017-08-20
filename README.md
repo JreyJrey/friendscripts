@@ -11,7 +11,7 @@ Nothing to install!
 1. Visit the page @ https://jreyjrey.github.io/friendscripts/
 2. Have fun!
 
-![alt text](./assets/images/friendscripts.png?raw=true)
+![Alt text](./assets/images/friendscripts.png?raw=true)
 
 ## Contributing
 
